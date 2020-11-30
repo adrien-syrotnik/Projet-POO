@@ -127,6 +127,9 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="CL_CAD.h" />
+    <ClInclude Include="GestionPersonnel.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -146,10 +149,14 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Personnel.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CL_CAD.cpp" />
+    <ClCompile Include="GestionPersonnel.cpp" />
     <ClCompile Include="InterfaceProjetBDD.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyFormClient.cpp" />
@@ -163,6 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Personnel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />

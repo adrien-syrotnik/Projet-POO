@@ -1,5 +1,15 @@
-﻿  MyForm.cpp
+﻿  pch.cpp
+  AssemblyInfo.cpp
+  Client.cpp
+  CL_CAD.cpp
+  InterfaceProjetBDD.cpp
+  MyForm.cpp
+  MyFormClient.cpp
+  MyFormCommandes.cpp
   MyFormPersonnel.cpp
+  MyFormStatistiques.cpp
+  MyFormStock.cpp
   Génération de code en cours...
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   AssemblyInfo.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
-  InterfaceProjetBDD.vcxproj -> D:\CESI\A2\projet 2\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe
+  InterfaceProjetBDD.vcxproj -> C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe
