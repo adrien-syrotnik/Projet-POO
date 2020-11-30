@@ -1,6 +1,0 @@
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxprojAssemblyReference.cache
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyForm.resources
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxproj.GenerateResource.cache
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormPersonnel.resources
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormClient.resources
-D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormCommandes.resources
