@@ -17,6 +17,26 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class Adresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.Data.DataRow): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    setID(Int32): PrivateScope, Public, HideBySig
+    getID(): PrivateScope, Public, HideBySig
+    setCP(String): PrivateScope, Public, HideBySig
+    getCP(): PrivateScope, Public, HideBySig
+    getLigneAdresse(): PrivateScope, Public, HideBySig
+    setLigneAdresse(String): PrivateScope, Public, HideBySig
+    getVille(): PrivateScope, Public, HideBySig
+    setVille(String): PrivateScope, Public, HideBySig
+    getPays(): PrivateScope, Public, HideBySig
+    setPays(String): PrivateScope, Public, HideBySig
+Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getTableName(): PrivateScope, Public, HideBySig
+    getAdresse(Int32): PrivateScope, Public, HideBySig
+    addAdress(): PrivateScope, Public, HideBySig
 Class InterfaceProjetBDD.MyFormPersonnel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
