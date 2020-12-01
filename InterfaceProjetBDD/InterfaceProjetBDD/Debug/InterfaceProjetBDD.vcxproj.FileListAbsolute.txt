@@ -1,0 +1,12 @@
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxprojAssemblyReference.cache
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyForm.resources
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxproj.GenerateResource.cache
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormPersonnel.resources
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormClient.resources
+D:\CESI\A2\projet 2\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormCommandes.resources
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxprojAssemblyReference.cache
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyForm.resources
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormClient.resources
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormCommandes.resources
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.MyFormPersonnel.resources
+C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Debug\InterfaceProjetBDD.vcxproj.GenerateResource.cache
