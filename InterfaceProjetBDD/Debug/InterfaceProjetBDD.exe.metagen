@@ -35,7 +35,7 @@ Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getTableName(): PrivateScope, Public, HideBySig
-    getAdresse(Int32): PrivateScope, Public, HideBySig
+    getAdressePersonnel(Int32): PrivateScope, Public, HideBySig
     addAdress(): PrivateScope, Public, HideBySig
 Class InterfaceProjetBDD.MyFormPersonnel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form

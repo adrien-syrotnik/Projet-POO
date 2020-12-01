@@ -1,5 +1,7 @@
-﻿  GestionPersonnel.cpp
-  Personnel.cpp
+﻿  GestionAdresse.cpp
+  MyForm.cpp
+  MyFormClient.cpp
+  MyFormPersonnel.cpp
   Génération de code en cours...
   Adresse.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
   InterfaceProjetBDD.vcxproj -> C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe

@@ -34,6 +34,63 @@ namespace InterfaceProjetBDD {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	protected:
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nom;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ prenom;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DateAnniv;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ date1reCommande;
+	private: System::Windows::Forms::DataGridView^ dataGridView2;
+	private: System::Windows::Forms::DataGridView^ dataGridView3;
+	private: System::Windows::Forms::DataGridView^ dataGridView4;
+	private: System::Windows::Forms::TextBox^ textBoxNom;
+	private: System::Windows::Forms::TextBox^ textBoxDate1Commande;
+
+
+	private: System::Windows::Forms::TextBox^ textBoxDateAnniv;
+
+	private: System::Windows::Forms::TextBox^ textBoxPrénom;
+
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Button^ buttonAjouterClient;
+	private: System::Windows::Forms::Button^ buttonSupprimerClient;
+	private: System::Windows::Forms::Button^ buttonModifierClient;
+	private: System::Windows::Forms::Button^ validationButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ validationButtonAdresseFacturation;
+	private: System::Windows::Forms::Button^ validationButtonAdresseLivraison;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Ligne1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ codePostal1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ville1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ codePostal2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ville2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ reference;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateLivraison;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateReglement;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateAchat;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantHT;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTVA;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTTC;
 
 	private:
 		/// <summary>
@@ -48,18 +105,413 @@ namespace InterfaceProjetBDD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->nom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->prenom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->DateAnniv = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->date1reCommande = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->Ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pays1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->codePostal1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ville1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->ligne2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pays2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->codePostal2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ville2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridView4 = (gcnew System::Windows::Forms::DataGridView());
+			this->reference = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateLivraison = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateReglement = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateAchat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantHT = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantTVA = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantTTC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->textBoxNom = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDate1Commande = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDateAnniv = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxPrénom = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->buttonAjouterClient = (gcnew System::Windows::Forms::Button());
+			this->buttonSupprimerClient = (gcnew System::Windows::Forms::Button());
+			this->buttonModifierClient = (gcnew System::Windows::Forms::Button());
+			this->validationButton = (gcnew System::Windows::Forms::Button());
+			this->validationButtonAdresseFacturation = (gcnew System::Windows::Forms::Button());
+			this->validationButtonAdresseLivraison = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->nom, this->prenom,
+					this->DateAnniv, this->date1reCommande
+			});
+			this->dataGridView1->Location = System::Drawing::Point(12, 44);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(444, 370);
+			this->dataGridView1->TabIndex = 0;
+			// 
+			// nom
+			// 
+			this->nom->HeaderText = L"Nom";
+			this->nom->Name = L"nom";
+			// 
+			// prenom
+			// 
+			this->prenom->HeaderText = L"Prénom";
+			this->prenom->Name = L"prenom";
+			// 
+			// DateAnniv
+			// 
+			this->DateAnniv->HeaderText = L"Date anniversaire";
+			this->DateAnniv->Name = L"DateAnniv";
+			// 
+			// date1reCommande
+			// 
+			this->date1reCommande->HeaderText = L"Date 1ere commande";
+			this->date1reCommande->Name = L"date1reCommande";
+			// 
+			// dataGridView2
+			// 
+			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Ligne1,
+					this->pays1, this->codePostal1, this->ville1
+			});
+			this->dataGridView2->Location = System::Drawing::Point(678, 12);
+			this->dataGridView2->Name = L"dataGridView2";
+			this->dataGridView2->Size = System::Drawing::Size(537, 97);
+			this->dataGridView2->TabIndex = 1;
+			// 
+			// Ligne1
+			// 
+			this->Ligne1->HeaderText = L"Ligne";
+			this->Ligne1->Name = L"Ligne1";
+			this->Ligne1->Width = 190;
+			// 
+			// pays1
+			// 
+			this->pays1->HeaderText = L"Pays";
+			this->pays1->Name = L"pays1";
+			// 
+			// codePostal1
+			// 
+			this->codePostal1->HeaderText = L"Code postal";
+			this->codePostal1->Name = L"codePostal1";
+			// 
+			// ville1
+			// 
+			this->ville1->HeaderText = L"Ville";
+			this->ville1->Name = L"ville1";
+			// 
+			// dataGridView3
+			// 
+			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->ligne2,
+					this->pays2, this->codePostal2, this->ville2
+			});
+			this->dataGridView3->Location = System::Drawing::Point(678, 135);
+			this->dataGridView3->Name = L"dataGridView3";
+			this->dataGridView3->Size = System::Drawing::Size(537, 94);
+			this->dataGridView3->TabIndex = 2;
+			// 
+			// ligne2
+			// 
+			this->ligne2->HeaderText = L"Ligne";
+			this->ligne2->Name = L"ligne2";
+			this->ligne2->Width = 190;
+			// 
+			// pays2
+			// 
+			this->pays2->HeaderText = L"Pays";
+			this->pays2->Name = L"pays2";
+			// 
+			// codePostal2
+			// 
+			this->codePostal2->HeaderText = L"Code postal";
+			this->codePostal2->Name = L"codePostal2";
+			// 
+			// ville2
+			// 
+			this->ville2->HeaderText = L"Ville";
+			this->ville2->Name = L"ville2";
+			// 
+			// dataGridView4
+			// 
+			this->dataGridView4->AllowUserToAddRows = false;
+			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView4->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+				this->reference,
+					this->dateLivraison, this->dateReglement, this->dateAchat, this->montantHT, this->montantTVA, this->montantTTC
+			});
+			this->dataGridView4->Location = System::Drawing::Point(746, 263);
+			this->dataGridView4->Name = L"dataGridView4";
+			this->dataGridView4->Size = System::Drawing::Size(713, 288);
+			this->dataGridView4->TabIndex = 3;
+			// 
+			// reference
+			// 
+			this->reference->HeaderText = L"Référence";
+			this->reference->Name = L"reference";
+			// 
+			// dateLivraison
+			// 
+			this->dateLivraison->HeaderText = L"Date prévue pour la livraison";
+			this->dateLivraison->Name = L"dateLivraison";
+			// 
+			// dateReglement
+			// 
+			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
+			this->dateReglement->Name = L"dateReglement";
+			// 
+			// dateAchat
+			// 
+			this->dateAchat->HeaderText = L"Date d\'achat";
+			this->dateAchat->Name = L"dateAchat";
+			// 
+			// montantHT
+			// 
+			this->montantHT->HeaderText = L"Montant HT";
+			this->montantHT->Name = L"montantHT";
+			this->montantHT->Width = 90;
+			// 
+			// montantTVA
+			// 
+			this->montantTVA->HeaderText = L"Montant TVA";
+			this->montantTVA->Name = L"montantTVA";
+			this->montantTVA->Width = 90;
+			// 
+			// montantTTC
+			// 
+			this->montantTTC->HeaderText = L"Montant TTC";
+			this->montantTTC->Name = L"montantTTC";
+			this->montantTTC->Width = 90;
+			// 
+			// textBoxNom
+			// 
+			this->textBoxNom->Location = System::Drawing::Point(12, 427);
+			this->textBoxNom->Name = L"textBoxNom";
+			this->textBoxNom->Size = System::Drawing::Size(106, 20);
+			this->textBoxNom->TabIndex = 4;
+			this->textBoxNom->Visible = false;
+			// 
+			// textBoxDate1Commande
+			// 
+			this->textBoxDate1Commande->Location = System::Drawing::Point(348, 427);
+			this->textBoxDate1Commande->Name = L"textBoxDate1Commande";
+			this->textBoxDate1Commande->Size = System::Drawing::Size(106, 20);
+			this->textBoxDate1Commande->TabIndex = 5;
+			this->textBoxDate1Commande->Visible = false;
+			// 
+			// textBoxDateAnniv
+			// 
+			this->textBoxDateAnniv->Location = System::Drawing::Point(236, 427);
+			this->textBoxDateAnniv->Name = L"textBoxDateAnniv";
+			this->textBoxDateAnniv->Size = System::Drawing::Size(106, 20);
+			this->textBoxDateAnniv->TabIndex = 6;
+			this->textBoxDateAnniv->Visible = false;
+			// 
+			// textBoxPrénom
+			// 
+			this->textBoxPrénom->Location = System::Drawing::Point(124, 427);
+			this->textBoxPrénom->Name = L"textBoxPrénom";
+			this->textBoxPrénom->Size = System::Drawing::Size(106, 20);
+			this->textBoxPrénom->TabIndex = 7;
+			this->textBoxPrénom->Visible = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(516, 44);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(135, 21);
+			this->label1->TabIndex = 8;
+			this->label1->Text = L"Adresse Livraison";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(516, 170);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(156, 21);
+			this->label2->TabIndex = 9;
+			this->label2->Text = L"Adresse Facturation";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(649, 393);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(91, 21);
+			this->label3->TabIndex = 10;
+			this->label3->Text = L"Commandes";
+			// 
+			// buttonAjouterClient
+			// 
+			this->buttonAjouterClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->buttonAjouterClient->Location = System::Drawing::Point(25, 487);
+			this->buttonAjouterClient->Name = L"buttonAjouterClient";
+			this->buttonAjouterClient->Size = System::Drawing::Size(154, 41);
+			this->buttonAjouterClient->TabIndex = 11;
+			this->buttonAjouterClient->Text = L"Ajouter un client";
+			this->buttonAjouterClient->UseVisualStyleBackColor = true;
+			this->buttonAjouterClient->Click += gcnew System::EventHandler(this, &MyFormClient::buttonAjouterClient_Click);
+			// 
+			// buttonSupprimerClient
+			// 
+			this->buttonSupprimerClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->buttonSupprimerClient->Location = System::Drawing::Point(199, 487);
+			this->buttonSupprimerClient->Name = L"buttonSupprimerClient";
+			this->buttonSupprimerClient->Size = System::Drawing::Size(156, 41);
+			this->buttonSupprimerClient->TabIndex = 12;
+			this->buttonSupprimerClient->Text = L"Supprimer un client";
+			this->buttonSupprimerClient->UseVisualStyleBackColor = true;
+			// 
+			// buttonModifierClient
+			// 
+			this->buttonModifierClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->buttonModifierClient->Location = System::Drawing::Point(380, 487);
+			this->buttonModifierClient->Name = L"buttonModifierClient";
+			this->buttonModifierClient->Size = System::Drawing::Size(142, 41);
+			this->buttonModifierClient->TabIndex = 13;
+			this->buttonModifierClient->Text = L"Modifier un client";
+			this->buttonModifierClient->UseVisualStyleBackColor = true;
+			this->buttonModifierClient->Click += gcnew System::EventHandler(this, &MyFormClient::buttonModifierClient_Click);
+			// 
+			// validationButton
+			// 
+			this->validationButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->validationButton->Location = System::Drawing::Point(160, 555);
+			this->validationButton->Name = L"validationButton";
+			this->validationButton->Size = System::Drawing::Size(135, 40);
+			this->validationButton->TabIndex = 14;
+			this->validationButton->Text = L"VALIDER";
+			this->validationButton->UseVisualStyleBackColor = true;
+			this->validationButton->Visible = false;
+			this->validationButton->Click += gcnew System::EventHandler(this, &MyFormClient::validationButton_Click);
+			// 
+			// validationButtonAdresseFacturation
+			// 
+			this->validationButtonAdresseFacturation->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->validationButtonAdresseFacturation->Location = System::Drawing::Point(1246, 153);
+			this->validationButtonAdresseFacturation->Name = L"validationButtonAdresseFacturation";
+			this->validationButtonAdresseFacturation->Size = System::Drawing::Size(197, 56);
+			this->validationButtonAdresseFacturation->TabIndex = 15;
+			this->validationButtonAdresseFacturation->Text = L"Valider l\'adresse de facturation";
+			this->validationButtonAdresseFacturation->UseVisualStyleBackColor = true;
+			this->validationButtonAdresseFacturation->Click += gcnew System::EventHandler(this, &MyFormClient::validationButtonAdresseFacturation_Click);
+			// 
+			// validationButtonAdresseLivraison
+			// 
+			this->validationButtonAdresseLivraison->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->validationButtonAdresseLivraison->Location = System::Drawing::Point(1246, 27);
+			this->validationButtonAdresseLivraison->Name = L"validationButtonAdresseLivraison";
+			this->validationButtonAdresseLivraison->Size = System::Drawing::Size(197, 56);
+			this->validationButtonAdresseLivraison->TabIndex = 16;
+			this->validationButtonAdresseLivraison->Text = L"Valider l\'adresse de livraison";
+			this->validationButtonAdresseLivraison->UseVisualStyleBackColor = true;
+			this->validationButtonAdresseLivraison->Click += gcnew System::EventHandler(this, &MyFormClient::validationButtonAdresseLivraison_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(245, 12);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(50, 21);
+			this->label4->TabIndex = 17;
+			this->label4->Text = L"Client";
 			// 
 			// MyFormClient
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1054, 510);
+			this->ClientSize = System::Drawing::Size(1483, 625);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->validationButtonAdresseLivraison);
+			this->Controls->Add(this->validationButtonAdresseFacturation);
+			this->Controls->Add(this->validationButton);
+			this->Controls->Add(this->buttonModifierClient);
+			this->Controls->Add(this->buttonSupprimerClient);
+			this->Controls->Add(this->buttonAjouterClient);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->textBoxPrénom);
+			this->Controls->Add(this->textBoxDateAnniv);
+			this->Controls->Add(this->textBoxDate1Commande);
+			this->Controls->Add(this->textBoxNom);
+			this->Controls->Add(this->dataGridView4);
+			this->Controls->Add(this->dataGridView3);
+			this->Controls->Add(this->dataGridView2);
+			this->Controls->Add(this->dataGridView1);
 			this->Name = L"MyFormClient";
 			this->Text = L"MyFormClient";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+private: System::Void buttonAjouterClient_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->buttonModifierClient->Visible = !this->buttonModifierClient->Visible;
+	this->textBoxNom->Visible = !this->textBoxNom->Visible;
+	this->textBoxPrénom->Visible = !this->textBoxPrénom->Visible;
+	this->textBoxDate1Commande->Visible = !this->textBoxDate1Commande->Visible;
+	this->textBoxDateAnniv->Visible = !this->textBoxDateAnniv->Visible;
+	validationButton->Visible = !validationButton->Visible;
+
+	textBoxNom->Text = "";
+	textBoxPrénom->Text = "";
+	textBoxDate1Commande->Text = "";
+	textBoxDateAnniv->Text = "";
+}
+private: System::Void buttonModifierClient_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	this->buttonAjouterClient->Visible = !this->buttonAjouterClient->Visible;
+	this->textBoxNom->Visible = !this->textBoxNom->Visible;
+	this->textBoxPrénom->Visible = !this->textBoxPrénom->Visible;
+	this->textBoxDate1Commande->Visible = !this->textBoxDate1Commande->Visible;
+	this->textBoxDateAnniv->Visible = !this->textBoxDateAnniv->Visible;
+	validationButton->Visible = !validationButton->Visible;
+
+	/*this->textBoxNom->Text = ClientModif->getNom();
+	this->textBoxPrénom->Text = ClientModif->getPrenom();
+	this->textBoxDate1Commande->Text = ClientModif->get"nom variable 1re commande()";
+	this->textBoxDateAnniv->Text = ClientModif->get"nom variable date anniv()";*/
+}
+private: System::Void validationButton_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void validationButtonAdresseLivraison_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void validationButtonAdresseFacturation_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }
