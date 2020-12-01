@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "GestionAdresse.h"
-#include "CL_CAD.h"
 
 array<Adresse^>^ GestionAdresse::getAdressePersonnel(int IdClient)
 {

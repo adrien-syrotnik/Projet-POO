@@ -1,5 +1,8 @@
 #pragma once
 
+#include "GestionClient.h"
+#include "GestionCommande.h"
+
 namespace InterfaceProjetBDD {
 
 	using namespace System;
@@ -97,6 +100,8 @@ namespace InterfaceProjetBDD {
 		/// Variable nécessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		GestionClient^ GestionC = gcnew GestionClient;
+		GestionCommande^ GestionCom = gcnew GestionCommande;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -160,6 +165,7 @@ namespace InterfaceProjetBDD {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(444, 370);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormClient::dataGridView1_CellClick);
 			// 
 			// nom
 			// 
@@ -257,6 +263,7 @@ namespace InterfaceProjetBDD {
 			});
 			this->dataGridView4->Location = System::Drawing::Point(746, 263);
 			this->dataGridView4->Name = L"dataGridView4";
+			this->dataGridView4->ReadOnly = true;
 			this->dataGridView4->Size = System::Drawing::Size(713, 288);
 			this->dataGridView4->TabIndex = 3;
 			// 
@@ -264,38 +271,45 @@ namespace InterfaceProjetBDD {
 			// 
 			this->reference->HeaderText = L"Référence";
 			this->reference->Name = L"reference";
+			this->reference->ReadOnly = true;
 			// 
 			// dateLivraison
 			// 
 			this->dateLivraison->HeaderText = L"Date prévue pour la livraison";
 			this->dateLivraison->Name = L"dateLivraison";
+			this->dateLivraison->ReadOnly = true;
 			// 
 			// dateReglement
 			// 
 			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
 			this->dateReglement->Name = L"dateReglement";
+			this->dateReglement->ReadOnly = true;
 			// 
 			// dateAchat
 			// 
 			this->dateAchat->HeaderText = L"Date d\'achat";
 			this->dateAchat->Name = L"dateAchat";
+			this->dateAchat->ReadOnly = true;
 			// 
 			// montantHT
 			// 
 			this->montantHT->HeaderText = L"Montant HT";
 			this->montantHT->Name = L"montantHT";
+			this->montantHT->ReadOnly = true;
 			this->montantHT->Width = 90;
 			// 
 			// montantTVA
 			// 
 			this->montantTVA->HeaderText = L"Montant TVA";
 			this->montantTVA->Name = L"montantTVA";
+			this->montantTVA->ReadOnly = true;
 			this->montantTVA->Width = 90;
 			// 
 			// montantTTC
 			// 
 			this->montantTTC->HeaderText = L"Montant TTC";
 			this->montantTTC->Name = L"montantTTC";
+			this->montantTTC->ReadOnly = true;
 			this->montantTTC->Width = 90;
 			// 
 			// textBoxNom
@@ -478,6 +492,9 @@ namespace InterfaceProjetBDD {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+
+			majDataViewClient(GestionC->getClients());
+			majDataViewCommandeClient(GestionCom->getCommandeClient(GestionC->getClients()[0]->getID()));
 		}
 #pragma endregion
 private: System::Void buttonAjouterClient_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -512,6 +529,52 @@ private: System::Void validationButton_Click(System::Object^ sender, System::Eve
 private: System::Void validationButtonAdresseLivraison_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void validationButtonAdresseFacturation_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+
+
+
+	   private: void majDataViewClient(array<Client^>^ TableauClient) {
+
+		   dataGridView1->Rows->Clear();
+
+		   for (int ligne = 0; ligne < TableauClient->Length; ligne++) {
+
+			   dataGridView1->Rows->Add();
+
+			   dataGridView1->Rows[ligne]->Cells[0]->Value = TableauClient[ligne]->getNom();
+			   dataGridView1->Rows[ligne]->Cells[1]->Value = TableauClient[ligne]->getPrenom();
+			   dataGridView1->Rows[ligne]->Cells[2]->Value = TableauClient[ligne]->getDateAnniversaire();
+				dataGridView1->Rows[ligne]->Cells[3]->Value = TableauClient[ligne]->getDatePremierAchat();
+			   
+		   }
+	   }
+
+		   private: void majDataViewCommandeClient(array<Commande^>^ TableauCommande) {
+
+			   dataGridView4->Rows->Clear();
+
+			   for (int ligne = 0; ligne < TableauCommande->Length; ligne++) {
+
+				   dataGridView4->Rows->Add();
+
+				   dataGridView4->Rows[ligne]->Cells[0]->Value = TableauCommande[ligne]->getReference();
+				   dataGridView4->Rows[ligne]->Cells[1]->Value = TableauCommande[ligne]->getDatePrevueLivraison();
+				   dataGridView4->Rows[ligne]->Cells[2]->Value = TableauCommande[ligne]->getDateReglementEnregistre();
+				   dataGridView4->Rows[ligne]->Cells[3]->Value = TableauCommande[ligne]->getDateAchatCommande();
+				   dataGridView4->Rows[ligne]->Cells[4]->Value = TableauCommande[ligne]->getMontantHT();
+				   dataGridView4->Rows[ligne]->Cells[5]->Value = TableauCommande[ligne]->getMontantTVA();
+				   dataGridView4->Rows[ligne]->Cells[6]->Value = TableauCommande[ligne]->getMontantTTC();
+
+			   }
+		   }
+
+private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+
+
+	int IndexActu = dataGridView1->CurrentCell->RowIndex;
+	majDataViewCommandeClient(GestionCom->getCommandeClient(GestionC->getClients()[IndexActu]->getID()));
 }
 };
 }

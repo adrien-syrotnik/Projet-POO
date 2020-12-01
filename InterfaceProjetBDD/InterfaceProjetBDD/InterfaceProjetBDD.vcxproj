@@ -128,9 +128,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adresse.h" />
+    <ClInclude Include="Article.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="CL_CAD.h" />
+    <ClInclude Include="Commande.h" />
     <ClInclude Include="GestionAdresse.h" />
+    <ClInclude Include="GestionClient.h" />
+    <ClInclude Include="GestionCommande.h" />
     <ClInclude Include="GestionPersonnel.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
@@ -152,14 +156,19 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Personnel.h" />
+    <ClInclude Include="PrixArticle.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adresse.cpp" />
+    <ClCompile Include="Article.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="CL_CAD.cpp" />
+    <ClCompile Include="Commande.cpp" />
     <ClCompile Include="GestionAdresse.cpp" />
+    <ClCompile Include="GestionClient.cpp" />
+    <ClCompile Include="GestionCommande.cpp" />
     <ClCompile Include="GestionPersonnel.cpp" />
     <ClCompile Include="InterfaceProjetBDD.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -175,6 +184,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Personnel.cpp" />
+    <ClCompile Include="PrixArticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
