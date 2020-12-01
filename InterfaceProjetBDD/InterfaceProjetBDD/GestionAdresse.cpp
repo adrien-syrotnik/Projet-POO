@@ -2,7 +2,7 @@
 #include "GestionAdresse.h"
 #include "CL_CAD.h"
 
-array<Adresse^>^ GestionAdresse::getAdresse(int IdClient)
+array<Adresse^>^ GestionAdresse::getAdressePersonnel(int IdClient)
 {
     String^ tableName = getTableName();
     //Requête pour récupérer à partir de Sql Server 

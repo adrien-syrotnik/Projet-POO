@@ -12,7 +12,7 @@ Personnel::Personnel()
     this->DateEmbauche = "";
     this->IsSuperieur = false;
     this->Supprimer = false;
-    this->ID_Superieur = -1;
+    this->ID_Superieur = 0;
     this->ID_Adresse = -1;
 }
 

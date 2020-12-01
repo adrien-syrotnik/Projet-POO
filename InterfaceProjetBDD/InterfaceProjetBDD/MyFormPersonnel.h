@@ -54,17 +54,17 @@ namespace InterfaceProjetBDD {
 	private: System::Windows::Forms::TextBox^ DateEmbauchePersonnel;
 	private: System::Windows::Forms::TextBox^ Superieur;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nom;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Prénom;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DateEmbauche;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Supérieur;
+
+
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
 	private: System::Windows::Forms::Label^ label1;
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ cp;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ville;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays;
+
+
+
+
 	private: System::Windows::Forms::Button^ majPersonnel;
 	private: System::Windows::Forms::Button^ validationButton;
 
@@ -98,6 +98,21 @@ namespace InterfaceProjetBDD {
 		GestionPersonnel^ GestionP = gcnew GestionPersonnel;
 		GestionAdresse^ GestionA = gcnew GestionAdresse;
 		Personnel^ PersonnelModif = gcnew Personnel;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ cp;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ville;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Nom;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Prénom;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DateEmbauche;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Supérieur;
+
+
+
+
+
+		   Adresse^ AdresseModif = gcnew Adresse;
 		
 
 #pragma region Windows Form Designer generated code
@@ -115,18 +130,19 @@ namespace InterfaceProjetBDD {
 			this->DateEmbauchePersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->Superieur = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pays = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ville = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->majPersonnel = (gcnew System::Windows::Forms::Button());
+			this->validationButton = (gcnew System::Windows::Forms::Button());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Nom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Prénom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->DateEmbauche = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Supérieur = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
-			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cp = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ville = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->pays = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->majPersonnel = (gcnew System::Windows::Forms::Button());
-			this->validationButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
@@ -196,43 +212,25 @@ namespace InterfaceProjetBDD {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->Nom, this->Prénom,
-					this->DateEmbauche, this->Supérieur
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->ID, this->Nom,
+					this->Prénom, this->DateEmbauche, this->Supérieur
 			});
 			this->dataGridView1->Location = System::Drawing::Point(30, 97);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(477, 300);
+			this->dataGridView1->Size = System::Drawing::Size(449, 300);
 			this->dataGridView1->TabIndex = 14;
 			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormPersonnel::dataGridView1_CellClick);
 			// 
-			// Nom
-			// 
-			this->Nom->HeaderText = L"Nom";
-			this->Nom->Name = L"Nom";
-			// 
-			// Prénom
-			// 
-			this->Prénom->HeaderText = L"Prénom";
-			this->Prénom->Name = L"Prénom";
-			// 
-			// DateEmbauche
-			// 
-			this->DateEmbauche->HeaderText = L"Date d\'embauche";
-			this->DateEmbauche->Name = L"DateEmbauche";
-			// 
-			// Supérieur
-			// 
-			this->Supérieur->HeaderText = L"Superieur";
-			this->Supérieur->Name = L"Supérieur";
-			// 
 			// dataGridView2
 			// 
+			this->dataGridView2->AllowUserToAddRows = false;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->ligne1,
-					this->cp, this->ville, this->pays
+					this->pays, this->cp, this->ville
 			});
 			this->dataGridView2->Location = System::Drawing::Point(30, 447);
 			this->dataGridView2->Name = L"dataGridView2";
@@ -244,6 +242,11 @@ namespace InterfaceProjetBDD {
 			this->ligne1->HeaderText = L"Ligne";
 			this->ligne1->Name = L"ligne1";
 			// 
+			// pays
+			// 
+			this->pays->HeaderText = L"Pays";
+			this->pays->Name = L"pays";
+			// 
 			// cp
 			// 
 			this->cp->HeaderText = L"Code postal";
@@ -253,11 +256,6 @@ namespace InterfaceProjetBDD {
 			// 
 			this->ville->HeaderText = L"Ville";
 			this->ville->Name = L"ville";
-			// 
-			// pays
-			// 
-			this->pays->HeaderText = L"Pays";
-			this->pays->Name = L"pays";
 			// 
 			// label1
 			// 
@@ -295,6 +293,32 @@ namespace InterfaceProjetBDD {
 			this->validationButton->Visible = false;
 			this->validationButton->Click += gcnew System::EventHandler(this, &MyFormPersonnel::validationButton_Click);
 			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"ID";
+			this->ID->Name = L"ID";
+			this->ID->Width = 30;
+			// 
+			// Nom
+			// 
+			this->Nom->HeaderText = L"Nom";
+			this->Nom->Name = L"Nom";
+			// 
+			// Prénom
+			// 
+			this->Prénom->HeaderText = L"Prénom";
+			this->Prénom->Name = L"Prénom";
+			// 
+			// DateEmbauche
+			// 
+			this->DateEmbauche->HeaderText = L"Date d\'embauche";
+			this->DateEmbauche->Name = L"DateEmbauche";
+			// 
+			// Supérieur
+			// 
+			this->Supérieur->HeaderText = L"Superieur";
+			this->Supérieur->Name = L"Supérieur";
+			// 
 			// MyFormPersonnel
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -317,10 +341,10 @@ namespace InterfaceProjetBDD {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-			
 
 			majDataViewPersonnel(GestionP->getPersonnels());
-			majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID()));
+			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+
 		}
 #pragma endregion
 	//AJOUTER UN PERSONNEL
@@ -339,32 +363,47 @@ namespace InterfaceProjetBDD {
 
 		//RESET LA PERSONNE QU'ON MODIF
 		PersonnelModif = gcnew Personnel;
+		AdresseModif = gcnew Adresse;
+
+		dataGridView1->ClearSelection();
+		dataGridView2->Rows->Clear();
+		dataGridView2->Rows->Add();
 
 		}
 	
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (MessageBox::Show("Voulez-vous vraiment supprimer ce personnel ? ", "Supprimer un personnel", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-		int indexActuel = dataGridView1->CurrentCell->RowIndex;
-		dataGridView1->Rows->RemoveAt(indexActuel);
+
+	int indexActuel = dataGridView1->CurrentCell->RowIndex;
+	PersonnelModif = GestionP->getPersonnels()[indexActuel];
+
+	if (MessageBox::Show("Voulez-vous vraiment supprimer ce personnel : '"+ PersonnelModif->getNom() +"' ? ", "Supprimer un personnel", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		
+		GestionP->del(PersonnelModif);
+
+		majDataViewPersonnel(GestionP->getPersonnels());
+		majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
 		
 	}
 }
-	   int ligne = 0;
+
 	private: System::Void validationButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (MessageBox::Show("Voulez-vous vraiment ajouter ce personnel ? ", "Ajouter un personnel", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			this->dataGridView1->Rows->Add();
-			this->dataGridView1->Rows[ligne]->Cells[0]->Value = this->NomPersonnel->Text;
-			this->dataGridView1->Rows[ligne]->Cells[1]->Value = this->PrenomPersonnel->Text;
-			this->dataGridView1->Rows[ligne]->Cells[2]->Value = this->DateEmbauchePersonnel->Text;
-			this->dataGridView1->Rows[ligne]->Cells[3]->Value = this->Superieur->Text;
+
+
+			PersonnelModif->setNom(this->NomPersonnel->Text);
+			PersonnelModif->setPrenom(this->PrenomPersonnel->Text);
+			PersonnelModif->setDateEmbauche(this->DateEmbauchePersonnel->Text);
+			PersonnelModif->setID_Superieur(Convert::ToInt32(this->Superieur->Text));
+
+			AdresseModif->setLigneAdresse(dataGridView2->Rows[0]->Cells[0]->Value->ToString());
+			AdresseModif->setPays(dataGridView2->Rows[0]->Cells[1]->Value->ToString());
+			AdresseModif->setCP(dataGridView2->Rows[0]->Cells[2]->Value->ToString());
+			AdresseModif->setVille(dataGridView2->Rows[0]->Cells[3]->Value->ToString());
 
 			this->NomPersonnel->Text = "";
 			this->PrenomPersonnel->Text = "";
-			this->PrenomPersonnel->Text = "";
 			this->DateEmbauchePersonnel->Text = "";
 			this->Superieur->Text = "";
-
-			ligne++;
 
 			this->majPersonnel->Visible = true;
 			NomPersonnel->Visible = false;
@@ -373,14 +412,16 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			Superieur->Visible = false;
 			validationButton->Visible = false;
 			this->button2->Visible = true;
+
+
+			GestionP->persist(PersonnelModif, AdresseModif);
+			majDataViewPersonnel(GestionP->getPersonnels());
+			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+
 		}
 
-		/*Personnel^ P = gcnew Personnel;
-		//P->setID()
 
-		int IndexActu = dataGridView1->CurrentCell->RowIndex;
-		majDataViewPersonnel(GestionP->getPersonnels());
-		majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[IndexActu]->getID()));*/
+		
 
 	}
 private: System::Void majPersonnel_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -394,17 +435,13 @@ private: System::Void majPersonnel_Click(System::Object^ sender, System::EventAr
 	int indexActuel = dataGridView1->CurrentCell->RowIndex;
 	//ATTRIBUTION DES DONNEES PAR RAPPORT A CELUI SELECTIONNE
 	PersonnelModif = GestionP->getPersonnels()[indexActuel];
-
+	AdresseModif = GestionA->getAdressePersonnel(PersonnelModif->getID())[0];
+	
 
 	this->NomPersonnel->Text = PersonnelModif->getNom();
 	this->PrenomPersonnel->Text = PersonnelModif->getPrenom();
 	this->DateEmbauchePersonnel->Text = PersonnelModif->getDateEmbauche();
 	this->Superieur->Text = Convert::ToString(PersonnelModif->getID_Superieur());
-
-	/*this->NomPersonnel->Text = dataGridView1->Rows[indexActuel]->Cells[0]->Value->ToString();
-	this->PrenomPersonnel->Text = dataGridView1->Rows[indexActuel]->Cells[1]->Value->ToString();
-	this->DateEmbauchePersonnel->Text = dataGridView1->Rows[indexActuel]->Cells[2]->Value->ToString();
-	this->Superieur->Text = dataGridView1->Rows[indexActuel]->Cells[3]->Value->ToString();*/
 	
 	
 
@@ -418,14 +455,15 @@ private: System::Void majPersonnel_Click(System::Object^ sender, System::EventAr
 
 			dataGridView1->Rows->Add();
 
-			dataGridView1->Rows[ligne]->Cells[0]->Value = TableauPersonnel[ligne]->getNom();
-			dataGridView1->Rows[ligne]->Cells[1]->Value = TableauPersonnel[ligne]->getPrenom();
-			dataGridView1->Rows[ligne]->Cells[2]->Value = TableauPersonnel[ligne]->getDateEmbauche();
+			dataGridView1->Rows[ligne]->Cells[0]->Value = TableauPersonnel[ligne]->getID();
+			dataGridView1->Rows[ligne]->Cells[1]->Value = TableauPersonnel[ligne]->getNom();
+			dataGridView1->Rows[ligne]->Cells[2]->Value = TableauPersonnel[ligne]->getPrenom();
+			dataGridView1->Rows[ligne]->Cells[3]->Value = TableauPersonnel[ligne]->getDateEmbauche();
 			if (TableauPersonnel[ligne]->getID_Superieur() == 0) {
-				dataGridView1->Rows[ligne]->Cells[3]->Value = L"Pas de Supérieur";
+				dataGridView1->Rows[ligne]->Cells[4]->Value = L"Pas de Supérieur";
 			}
 			else {
-				dataGridView1->Rows[ligne]->Cells[3]->Value = TableauPersonnel[ligne]->getID_Superieur();
+				dataGridView1->Rows[ligne]->Cells[4]->Value = TableauPersonnel[ligne]->getID_Superieur();
 			}
 		}
 	}
@@ -436,7 +474,7 @@ private: System::Void majPersonnel_Click(System::Object^ sender, System::EventAr
 
 			   for (int ligne = 0; ligne < TableauAdresse->Length; ligne++) {
 
-				   
+				   dataGridView2->Rows->Add();
 
 				   dataGridView2->Rows[ligne]->Cells[0]->Value = TableauAdresse[ligne]->getLigneAdresse();
 				   dataGridView2->Rows[ligne]->Cells[1]->Value = TableauAdresse[ligne]->getPays();
@@ -459,10 +497,11 @@ private: System::Void majPersonnel_Click(System::Object^ sender, System::EventAr
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 	int IndexActu = dataGridView1->CurrentCell->RowIndex;
-	majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[IndexActu]->getID()));
+	majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[IndexActu]->getID()));
 	
 
 }
+
 };
 
 
