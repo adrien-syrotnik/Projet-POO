@@ -2,7 +2,7 @@
 
 #include "GestionPersonnel.h"
 #include "GestionAdresse.h"
-
+#include "VerifVille.h"
 
 
 namespace InterfaceProjetBDD {
@@ -70,6 +70,8 @@ namespace InterfaceProjetBDD {
 		GestionPersonnel^ GestionP = gcnew GestionPersonnel;
 		GestionAdresse^ GestionA = gcnew GestionAdresse;
 		Personnel^ PersonnelModif = gcnew Personnel;
+		VerifVille^ Ville = gcnew VerifVille;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ cp;
@@ -393,8 +395,9 @@ private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, Sys
 
 			AdresseModif->setLigneAdresse(dataGridView2->Rows[0]->Cells[0]->Value->ToString());
 			AdresseModif->setPays(dataGridView2->Rows[0]->Cells[1]->Value->ToString());
-			AdresseModif->setCP(dataGridView2->Rows[0]->Cells[2]->Value->ToString());
+			
 			AdresseModif->setVille(dataGridView2->Rows[0]->Cells[3]->Value->ToString());
+			AdresseModif->setCP(Ville->Verif(AdresseModif->getVille()));
 
 			this->NomPersonnel->Text = "";
 			this->PrenomPersonnel->Text = "";

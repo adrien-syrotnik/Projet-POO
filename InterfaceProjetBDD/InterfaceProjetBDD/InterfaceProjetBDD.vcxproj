@@ -133,6 +133,7 @@
     <ClInclude Include="CL_CAD.h" />
     <ClInclude Include="Commande.h" />
     <ClInclude Include="GestionAdresse.h" />
+    <ClInclude Include="GestionArticle.h" />
     <ClInclude Include="GestionClient.h" />
     <ClInclude Include="GestionCommande.h" />
     <ClInclude Include="GestionPersonnel.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Personnel.h" />
     <ClInclude Include="PrixArticle.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="VerifVille.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adresse.cpp" />
@@ -168,6 +170,7 @@
     <ClCompile Include="CL_CAD.cpp" />
     <ClCompile Include="Commande.cpp" />
     <ClCompile Include="GestionAdresse.cpp" />
+    <ClCompile Include="GestionArticle.cpp" />
     <ClCompile Include="GestionClient.cpp" />
     <ClCompile Include="GestionCommande.cpp" />
     <ClCompile Include="GestionPersonnel.cpp" />
@@ -187,6 +190,7 @@
     </ClCompile>
     <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="PrixArticle.cpp" />
+    <ClCompile Include="VerifVille.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -210,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyFormPersonnel.resx">
       <DependentUpon>MyFormPersonnel.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyFormStock.resx">
+      <DependentUpon>MyFormStock.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

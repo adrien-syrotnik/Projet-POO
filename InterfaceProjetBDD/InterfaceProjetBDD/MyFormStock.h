@@ -1,5 +1,7 @@
 #pragma once
 
+#include "GestionArticle.h"
+
 namespace InterfaceProjetBDD {
 
 	using namespace System;
@@ -61,7 +63,7 @@ namespace InterfaceProjetBDD {
 
 	private: System::Windows::Forms::Button^ buttonSupprimerProduit;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ seuilQuantiteReduction;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ prixArticle;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PrixArticle;
 	private: System::Windows::Forms::Button^ buttonValidation;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -76,6 +78,8 @@ namespace InterfaceProjetBDD {
 		/// Variable nécessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		GestionArticle^ GestionArt = gcnew GestionArticle;
+		Article^ ArticleModif = gcnew Article;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -93,7 +97,7 @@ namespace InterfaceProjetBDD {
 			this->typeArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
 			this->seuilQuantiteReduction = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->prixArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PrixArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->textBoxReference = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPrixTVA = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxQuantite = (gcnew System::Windows::Forms::TextBox());
@@ -113,6 +117,7 @@ namespace InterfaceProjetBDD {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->reference,
@@ -120,45 +125,53 @@ namespace InterfaceProjetBDD {
 			});
 			this->dataGridView1->Location = System::Drawing::Point(17, 41);
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->Size = System::Drawing::Size(643, 272);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormStock::dataGridView1_CellClick);
 			// 
 			// reference
 			// 
 			this->reference->HeaderText = L"Référence";
 			this->reference->Name = L"reference";
+			this->reference->ReadOnly = true;
 			// 
 			// nom
 			// 
 			this->nom->HeaderText = L"Nom";
 			this->nom->Name = L"nom";
+			this->nom->ReadOnly = true;
 			// 
 			// quantiteStock
 			// 
 			this->quantiteStock->HeaderText = L"Quantité en stock";
 			this->quantiteStock->Name = L"quantiteStock";
+			this->quantiteStock->ReadOnly = true;
 			// 
 			// tva
 			// 
 			this->tva->HeaderText = L"Prix TVA";
 			this->tva->Name = L"tva";
+			this->tva->ReadOnly = true;
 			// 
 			// seuilQuantite
 			// 
 			this->seuilQuantite->HeaderText = L"Seuil quantité";
 			this->seuilQuantite->Name = L"seuilQuantite";
+			this->seuilQuantite->ReadOnly = true;
 			// 
 			// typeArticle
 			// 
 			this->typeArticle->HeaderText = L"Type de l\'article";
 			this->typeArticle->Name = L"typeArticle";
+			this->typeArticle->ReadOnly = true;
 			// 
 			// dataGridView3
 			// 
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->seuilQuantiteReduction,
-					this->prixArticle
+					this->PrixArticle
 			});
 			this->dataGridView3->Location = System::Drawing::Point(103, 400);
 			this->dataGridView3->Name = L"dataGridView3";
@@ -172,8 +185,8 @@ namespace InterfaceProjetBDD {
 			// 
 			// prixArticle
 			// 
-			this->prixArticle->HeaderText = L"Prix unitaire d\'un article";
-			this->prixArticle->Name = L"prixArticle";
+			this->PrixArticle->HeaderText = L"Prix unitaire d\'un article";
+			this->PrixArticle->Name = L"prixArticle";
 			// 
 			// textBoxReference
 			// 
@@ -198,7 +211,6 @@ namespace InterfaceProjetBDD {
 			this->textBoxQuantite->Size = System::Drawing::Size(93, 20);
 			this->textBoxQuantite->TabIndex = 5;
 			this->textBoxQuantite->Visible = false;
-
 			// 
 			// textBoxNom
 			// 
@@ -207,7 +219,6 @@ namespace InterfaceProjetBDD {
 			this->textBoxNom->Size = System::Drawing::Size(93, 20);
 			this->textBoxNom->TabIndex = 6;
 			this->textBoxNom->Visible = false;
-
 			// 
 			// textBoxSeuilQuantite
 			// 
@@ -335,6 +346,9 @@ namespace InterfaceProjetBDD {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			ArticleModif = GestionArt->getArticles()[0];
+			majDataViewArticle(GestionArt->getArticles());
+			majDataViewPrixArticle(GestionArt->getprixArticle(ArticleModif->getID()));
 		}
 #pragma endregion
 
@@ -349,19 +363,25 @@ private: System::Void buttonAjouterProduit_Click(System::Object^ sender, System:
 	this->textBoxPrixTVA->Visible = !this->textBoxPrixTVA->Visible;
 	this->textBoxSeuilQuantite->Visible = !this->textBoxSeuilQuantite->Visible;
 	this->textBoxTypeArticle->Visible = !this->textBoxTypeArticle->Visible;
-	buttonValidation->Visible = !buttonValidation->Visible;
+	this->buttonValidation->Visible = !buttonValidation->Visible;
 
-	textBoxReference->Text = "";
-	textBoxNom->Text = "";
-	textBoxQuantite->Text = "";
-	textBoxPrixTVA->Text = "";
+	this->textBoxReference->Text = "";
+	this->textBoxNom->Text = "";
+	this->textBoxQuantite->Text = "";
+	this->textBoxPrixTVA->Text = "";
 	this->textBoxSeuilQuantite->Text = "";
 	this->textBoxTypeArticle->Text = "";
+
+	ArticleModif = gcnew Article;
 
 	nomFonction = "AJOUTER";
 }
 private: System::Void buttonSupprimerProduit_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (MessageBox::Show("Voulez-vous vraiment supprimer cet article ? ", "Supprimer un article", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+		int IndexActuel = dataGridView1->CurrentCell->RowIndex;
+		GestionArt->del(GestionArt->getArticles()[IndexActuel]);
+		majDataViewArticle(GestionArt->getArticles());
 	}
 }
 private: System::Void buttonModifierProduit_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -373,21 +393,90 @@ private: System::Void buttonModifierProduit_Click(System::Object^ sender, System
 	this->textBoxPrixTVA->Visible = !this->textBoxPrixTVA->Visible;
 	this->textBoxSeuilQuantite->Visible = !this->textBoxSeuilQuantite->Visible;
 	this->textBoxTypeArticle->Visible = !this->textBoxTypeArticle->Visible;
-	buttonValidation->Visible = !buttonValidation->Visible;
+	this->buttonValidation->Visible = !buttonValidation->Visible;
 
-	/*this->textBoxNom->Text = ArticleModif->getNom();
+	this->textBoxNom->Text = ArticleModif->getNom();
 	this->textBoxReference->Text = ArticleModif->getReference();
-	etc...*/
+	this->textBoxTypeArticle->Text = ArticleModif->getTypeArticle();
+	this->textBoxSeuilQuantite->Text = Convert::ToString(ArticleModif->getSeuilQuantite());
+	this->textBoxPrixTVA->Text = Convert::ToString(ArticleModif->getTVA());
+	this->textBoxQuantite->Text = Convert::ToString(ArticleModif->getQuantiteStock());
+
 	nomFonction = "MODIFIER";
 }
 private: System::Void buttonValidation_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (MessageBox::Show("Voulez-vous vraiment " + nomFonction + " cet article ? ", nomFonction + " un article", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 
 
+		ArticleModif->setSeuilQuantite(Convert::ToInt32(this->textBoxSeuilQuantite->Text));
+		
+		ArticleModif->setTVA(Convert::ToDouble(Convert::ToString(this->textBoxPrixTVA->Text)->Replace(L".", L",")));
+		ArticleModif->setQuantiteStock(Convert::ToInt32(this->textBoxQuantite->Text));
+		ArticleModif->setNom(this->textBoxNom->Text);
+		ArticleModif->setReference(this->textBoxReference->Text);
+		ArticleModif->setTypeArticle(this->textBoxTypeArticle->Text);
+		
+
+		this->buttonAjouterProduit->Visible = true;
+		this->buttonModifierProduit->Visible = true;
+		this->textBoxReference->Visible = !this->textBoxReference->Visible;
+		this->textBoxNom->Visible = !this->textBoxNom->Visible;
+		this->textBoxQuantite->Visible = !this->textBoxQuantite->Visible;
+		this->textBoxPrixTVA->Visible = !this->textBoxPrixTVA->Visible;
+		this->textBoxSeuilQuantite->Visible = !this->textBoxSeuilQuantite->Visible;
+		this->textBoxTypeArticle->Visible = !this->textBoxTypeArticle->Visible;
+		this->buttonValidation->Visible = !buttonValidation->Visible;
+
+		
+
+		GestionArt->persist(ArticleModif);
+		majDataViewArticle(GestionArt->getArticles());
+		majDataViewPrixArticle(GestionArt->getprixArticle(GestionArt->getArticles()[0]->getID()));
 	}
 
 }
 private: System::Void validationButtonPrixArticle_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+
+	   private: void majDataViewArticle(array<Article^>^ TableauArticle) {
+
+		   dataGridView1->Rows->Clear();
+
+		   for (int ligne = 0; ligne < TableauArticle->Length; ligne++) {
+
+			   dataGridView1->Rows->Add();
+
+			   dataGridView1->Rows[ligne]->Cells[0]->Value = TableauArticle[ligne]->getReference();
+			   dataGridView1->Rows[ligne]->Cells[1]->Value = TableauArticle[ligne]->getNom();
+			   dataGridView1->Rows[ligne]->Cells[2]->Value = TableauArticle[ligne]->getQuantiteStock();
+			   dataGridView1->Rows[ligne]->Cells[3]->Value = TableauArticle[ligne]->getTVA();
+			   dataGridView1->Rows[ligne]->Cells[4]->Value = TableauArticle[ligne]->getSeuilQuantite();
+			   dataGridView1->Rows[ligne]->Cells[5]->Value = TableauArticle[ligne]->getTypeArticle();
+
+		   }
+	   }
+
+
+		private: void majDataViewPrixArticle(array<prixArticle^>^ TableauArticle) {
+			
+			dataGridView3->Rows->Clear();
+
+			for (int ligne = 0; ligne < TableauArticle->Length; ligne++) {
+
+				dataGridView3->Rows->Add();
+
+				dataGridView3->Rows[ligne]->Cells[0]->Value = TableauArticle[ligne]->getSeuilQuantité();
+				dataGridView3->Rows[ligne]->Cells[1]->Value = TableauArticle[ligne]->getPrixArticleUnitaire() + " €";
+
+			}
+		}
+
+
+private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	int IndexActuel = dataGridView1->CurrentCell->RowIndex;
+	ArticleModif = GestionArt->getArticles()[IndexActuel];
+	majDataViewPrixArticle(GestionArt->getprixArticle(ArticleModif->getID()));
 }
 };
 }

@@ -95,6 +95,12 @@
     <ClInclude Include="Paiement.h">
       <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
+    <ClInclude Include="GestionArticle.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="VerifVille.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InterfaceProjetBDD.cpp">
@@ -159,6 +165,12 @@
     </ClCompile>
     <ClCompile Include="Paiement.cpp">
       <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="GestionArticle.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="VerifVille.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

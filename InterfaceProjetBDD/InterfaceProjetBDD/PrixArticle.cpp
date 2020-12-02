@@ -12,7 +12,7 @@ prixArticle::prixArticle(DataRow^ DR) {
 	this->ID = Convert::ToInt32(DR->ItemArray[0]);
 	this->seuilQuantité = Convert::ToInt32(DR->ItemArray[1]);
 	this->prixArticleUnitaire = Convert::ToDouble(DR->ItemArray[2]);
-	this->ID_Article = Convert::ToInt32(DR->ItemArray[3]);
+	//this->ID_Article = Convert::ToInt32(DR->ItemArray[3]);
 	
 }
 

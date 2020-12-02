@@ -2,6 +2,7 @@
   InterfaceProjetBDD.MyFormClient.resources - Embedded, ContainedInManifestFile, 
   InterfaceProjetBDD.MyFormCommandes.resources - Embedded, ContainedInManifestFile, 
   InterfaceProjetBDD.MyFormPersonnel.resources - Embedded, ContainedInManifestFile, 
+  InterfaceProjetBDD.MyFormStock.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly InterfaceProjetBDD, Version=1.0.*, Culture=Langue indifférente (Pays indifférent): 
 	hash=SHA1, flags=PublicKey
