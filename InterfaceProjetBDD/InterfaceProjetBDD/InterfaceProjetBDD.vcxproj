@@ -154,6 +154,7 @@
     <ClInclude Include="MyFormStock.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Paiement.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Personnel.h" />
     <ClInclude Include="PrixArticle.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="MyFormPersonnel.cpp" />
     <ClCompile Include="MyFormStatistiques.cpp" />
     <ClCompile Include="MyFormStock.cpp" />
+    <ClCompile Include="Paiement.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

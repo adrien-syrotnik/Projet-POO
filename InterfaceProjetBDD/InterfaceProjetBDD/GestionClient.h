@@ -1,6 +1,7 @@
 #pragma once
 #include "Client.h"
 #include "CL_CAD.h"
+#include "Adresse.h"
 
 using namespace System::Data;
 using namespace System;
@@ -16,5 +17,6 @@ public:
     GestionClient();
     array<Client^>^ getClients(); //NE PAS OUBLIER DE VERIF QUE SUPPRIMER = FALSE
     String^ getTableName();
-    //void persist(Personnel^, Adresse^);  void del(Personnel^);
+    void persist(Client^);//, array<Adresse^>^);  
+    void del(Client^);
 };

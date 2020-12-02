@@ -1,5 +1,7 @@
 ﻿  MyForm.cpp
 C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\GestionCommande.h(13,45): warning C4677: 'getCommandeClient' : la signature de membre non privée contient un type privé d'assembly 'Commande'
 C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Commande.h(5): message : voir la déclaration de 'Commande'
+  MyFormStock.cpp
+  Génération de code en cours...
   Adresse.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
   InterfaceProjetBDD.vcxproj -> C:\Users\adrie\OneDrive\Bureau\CESI 2020\POO\Projet POO\GitHub\Projet-POO\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe

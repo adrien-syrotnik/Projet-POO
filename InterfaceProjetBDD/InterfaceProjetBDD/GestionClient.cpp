@@ -31,40 +31,40 @@ String^ GestionClient::getTableName()
 
 
 
-/*void GestionPersonnel::persist(Personnel^ P, Adresse^ A)
+void GestionClient::persist(Client^ C)//, array<Adresse^>^ A)
 {
-    String^ tableName = GestionPersonnel::getTableName();
+    String^ tableName = GestionClient::getTableName();
     CL_CAD^ connexion = gcnew CL_CAD();
 
-    bool SupprimerSuperieur = (P->getID_Superieur() == 0);
+    String^ DateAnniv;
+    if (C->getDatePremierAchat() == L"")
+        DateAnniv = "NULL";
+    else
+        DateAnniv = "'" + C->getDatePremierAchat() + "'";
 
-    String^ majIDSuperieur;
-    if (P->getID_Superieur() == 0) { majIDSuperieur = "NULL"; }
-    else { majIDSuperieur = "'" + Convert::ToString(P->getID_Superieur()) + "'"; }
-
-    if (P->getID() == -1)
+    if (C->getID() == -1)
     {
         //Insert
 
-        A->setID(connexion->insert("INSERT INTO Adresse (Ligne1,Pays,CodePostal,Ville) " + "VALUES('" + A->getLigneAdresse() + "','" + A->getPays() + "','" + A->getCP() + "','" + A->getVille() + "');SELECT @@IDENTITY;"));
-        P->setID(connexion->insert("INSERT INTO Personnel (Nom,Prenom,IsSuperieur,DateEmbauche,Supprimer,Supprimer_Personnel_Superieur,ID_Personnel,ID_Adresse) " + "VALUES('" + P->getNom() + "','" + P->getPrenom() + "','" + P->IsSuperieur + "','" + P->getDateEmbauche() + "','" + false + "','" + SupprimerSuperieur + "'," + majIDSuperieur + ",'" + A->getID() + "');SELECT @@IDENTITY;"));
+        //A->setID(connexion->insert("INSERT INTO Adresse (Ligne1,Pays,CodePostal,Ville) " + "VALUES('" + A->getLigneAdresse() + "','" + A->getPays() + "','" + A->getCP() + "','" + A->getVille() + "');SELECT @@IDENTITY;"));
+        C->setID(connexion->insert("INSERT INTO Client (Nom,Prenom,DateAnniversaire,DatePremiereAchat,Supprimer) VALUES('"+ C->getNom() +"','" + C->getPrenom() + "','" + C->getDateAnniversaire() + "',"+ DateAnniv +",'False');SELECT @@IDENTITY;"));
     }
     else
     {
         //Update
-        connexion->update("UPDATE Personnel SET Nom = '" + P->getNom() + "', Prenom = '" + P->getPrenom() + "',IsSuperieur = '" + P->IsSuperieur + "',DateEmbauche = '" + P->getDateEmbauche() + "',Supprimer_Personnel_Superieur='" + SupprimerSuperieur + "',ID_Personnel = " + majIDSuperieur + ",ID_Adresse = '" + A->getID() + "' WHERE id =" + P->getID() + ";");
+        connexion->update("UPDATE Client SET Nom = '"+ C->getNom() +"', Prenom = '"+ C->getPrenom() +"', DateAnniversaire = '"+ C->getDateAnniversaire() +"',DatePremiereAchat = "+ DateAnniv +" WHERE id = " + C->getID() + ";");
 
-        connexion->update("UPDATE Adresse SET Ligne1 = '" + A->getLigneAdresse() + "', Pays = '" + A->getPays() + "', CodePostal = '" + A->getCP() + "', Ville = '" + A->getVille() + "'  WHERE id = " + A->getID() + ";");
+        //connexion->update("UPDATE Adresse SET Ligne1 = '" + A->getLigneAdresse() + "', Pays = '" + A->getPays() + "', CodePostal = '" + A->getCP() + "', Ville = '" + A->getVille() + "'  WHERE id = " + A->getID() + ";");
 
     }
 
 }
-void GestionPersonnel::del(Personnel^ P) {
+
+void GestionClient::del(Client^ C) {
 
     CL_CAD^ connexion = gcnew CL_CAD();
 
     //Update
-    connexion->update("UPDATE Personnel SET Supprimer = 'True' WHERE ID = " + P->getID() + ";");
+    connexion->update("UPDATE Client SET Supprimer = 'True' WHERE ID = " + C->getID() + ";");
 
 }
-*/

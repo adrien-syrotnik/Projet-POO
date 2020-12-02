@@ -2,6 +2,8 @@
 
 #include "GestionClient.h"
 #include "GestionCommande.h"
+#include "GestionAdresse.h"
+
 
 namespace InterfaceProjetBDD {
 
@@ -102,6 +104,8 @@ namespace InterfaceProjetBDD {
 		System::ComponentModel::Container ^components;
 		GestionClient^ GestionC = gcnew GestionClient;
 		GestionCommande^ GestionCom = gcnew GestionCommande;
+		GestionAdresse^ GestionA = gcnew GestionAdresse;
+		Client^ ClientActu = gcnew Client;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -399,6 +403,7 @@ namespace InterfaceProjetBDD {
 			this->buttonSupprimerClient->TabIndex = 12;
 			this->buttonSupprimerClient->Text = L"Supprimer un client";
 			this->buttonSupprimerClient->UseVisualStyleBackColor = true;
+			this->buttonSupprimerClient->Click += gcnew System::EventHandler(this, &MyFormClient::buttonSupprimerClient_Click);
 			// 
 			// buttonModifierClient
 			// 
@@ -492,12 +497,16 @@ namespace InterfaceProjetBDD {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-
+			ClientActu = GestionC->getClients()[0];
 			majDataViewClient(GestionC->getClients());
-			majDataViewCommandeClient(GestionCom->getCommandeClient(GestionC->getClients()[0]->getID()));
+			majDataViewCommandeClient(GestionCom->getCommandeClient(ClientActu->getID()));
+			majDataViewAdresseFacturationClient(GestionA->getAdresseClient(ClientActu->getID(), "Facturation"));
+			majDataViewAdresseLivraisonClient(GestionA->getAdresseClient(ClientActu->getID(), "Livraison"));
+
 		}
 #pragma endregion
 private: System::Void buttonAjouterClient_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	this->buttonModifierClient->Visible = !this->buttonModifierClient->Visible;
 	this->textBoxNom->Visible = !this->textBoxNom->Visible;
 	this->textBoxPrénom->Visible = !this->textBoxPrénom->Visible;
@@ -509,6 +518,10 @@ private: System::Void buttonAjouterClient_Click(System::Object^ sender, System::
 	textBoxPrénom->Text = "";
 	textBoxDate1Commande->Text = "";
 	textBoxDateAnniv->Text = "";
+
+	ClientActu = gcnew Client;
+	NomFonction = "AJOUTER";
+
 }
 private: System::Void buttonModifierClient_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -519,12 +532,46 @@ private: System::Void buttonModifierClient_Click(System::Object^ sender, System:
 	this->textBoxDateAnniv->Visible = !this->textBoxDateAnniv->Visible;
 	validationButton->Visible = !validationButton->Visible;
 
-	/*this->textBoxNom->Text = ClientModif->getNom();
-	this->textBoxPrénom->Text = ClientModif->getPrenom();
-	this->textBoxDate1Commande->Text = ClientModif->get"nom variable 1re commande()";
-	this->textBoxDateAnniv->Text = ClientModif->get"nom variable date anniv()";*/
+	this->textBoxNom->Text = ClientActu->getNom();
+	this->textBoxPrénom->Text = ClientActu->getPrenom();
+	this->textBoxDate1Commande->Text = ClientActu->getDatePremierAchat();
+	this->textBoxDateAnniv->Text = ClientActu->getDateAnniversaire();
+
+	NomFonction = "MODIFIER";
 }
+
+	   String^ NomFonction;
+
 private: System::Void validationButton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (MessageBox::Show("Voulez-vous vraiment " + NomFonction + " ce client ? ", NomFonction + " un client", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+		ClientActu->setNom(this->textBoxNom->Text);
+		ClientActu->setPrenom(this->textBoxPrénom->Text);
+		ClientActu->setDatePremierAchat(this->textBoxDate1Commande->Text);
+		ClientActu->setDateAnniversaire(this->textBoxDateAnniv->Text);
+
+
+
+		this->buttonModifierClient->Visible = true;
+		textBoxPrénom->Visible = false;
+		textBoxNom->Visible = false;
+		textBoxDate1Commande->Visible = false;
+		textBoxDateAnniv->Visible = false;
+		validationButton->Visible = false;
+		this->buttonAjouterClient->Visible = true;
+
+
+		GestionC->persist(ClientActu);
+
+		ClientActu = GestionC->getClients()[0];
+
+		majDataViewClient(GestionC->getClients());
+		majDataViewCommandeClient(GestionCom->getCommandeClient(ClientActu->getID()));
+		majDataViewAdresseFacturationClient(GestionA->getAdresseClient(ClientActu->getID(), "Facturation"));
+		majDataViewAdresseLivraisonClient(GestionA->getAdresseClient(ClientActu->getID(), "Livraison"));
+
+	}
 }
 private: System::Void validationButtonAdresseLivraison_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -550,6 +597,8 @@ private: System::Void validationButtonAdresseFacturation_Click(System::Object^ s
 		   }
 	   }
 
+
+
 		   private: void majDataViewCommandeClient(array<Commande^>^ TableauCommande) {
 
 			   dataGridView4->Rows->Clear();
@@ -569,12 +618,67 @@ private: System::Void validationButtonAdresseFacturation_Click(System::Object^ s
 			   }
 		   }
 
+		private: void majDataViewAdresseFacturationClient(array<Adresse^>^ TableauAdresseF) {
+
+			dataGridView3->Rows->Clear();
+
+			for (int ligne = 0; ligne < TableauAdresseF->Length; ligne++) {
+
+				dataGridView3->Rows->Add();
+
+				dataGridView3->Rows[ligne]->Cells[0]->Value = TableauAdresseF[ligne]->getLigneAdresse();
+				dataGridView3->Rows[ligne]->Cells[1]->Value = TableauAdresseF[ligne]->getPays();
+				dataGridView3->Rows[ligne]->Cells[2]->Value = TableauAdresseF[ligne]->getCP();
+				dataGridView3->Rows[ligne]->Cells[3]->Value = TableauAdresseF[ligne]->getVille();
+
+			}
+		}
+
+		private: void majDataViewAdresseLivraisonClient(array<Adresse^>^ TableauAdresseL) {
+
+			dataGridView2->Rows->Clear();
+
+			for (int ligne = 0; ligne < TableauAdresseL->Length; ligne++) {
+
+				dataGridView2->Rows->Add();
+
+				dataGridView2->Rows[ligne]->Cells[0]->Value = TableauAdresseL[ligne]->getLigneAdresse();
+				dataGridView2->Rows[ligne]->Cells[1]->Value = TableauAdresseL[ligne]->getPays();
+				dataGridView2->Rows[ligne]->Cells[2]->Value = TableauAdresseL[ligne]->getCP();
+				dataGridView2->Rows[ligne]->Cells[3]->Value = TableauAdresseL[ligne]->getVille();
+
+			}
+		}
+
+			
+
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 
 
 	int IndexActu = dataGridView1->CurrentCell->RowIndex;
-	majDataViewCommandeClient(GestionCom->getCommandeClient(GestionC->getClients()[IndexActu]->getID()));
+	ClientActu = GestionC->getClients()[IndexActu];
+
+	majDataViewCommandeClient(GestionCom->getCommandeClient(ClientActu->getID()));
+	majDataViewAdresseFacturationClient(GestionA->getAdresseClient(ClientActu->getID(),"Facturation"));
+	majDataViewAdresseLivraisonClient(GestionA->getAdresseClient(ClientActu->getID(), "Livraison"));
 }
+
+private: System::Void buttonSupprimerClient_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (MessageBox::Show("Voulez-vous vraiment supprimer ce client ? ", "Supprimer un client", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+		int IndexActu = dataGridView1->CurrentCell->RowIndex;
+		ClientActu = GestionC->getClients()[IndexActu];
+
+		GestionC->del(ClientActu);
+
+		majDataViewClient(GestionC->getClients());
+		majDataViewCommandeClient(GestionCom->getCommandeClient(ClientActu->getID()));
+		majDataViewAdresseFacturationClient(GestionA->getAdresseClient(ClientActu->getID(), "Facturation"));
+		majDataViewAdresseLivraisonClient(GestionA->getAdresseClient(ClientActu->getID(), "Livraison"));
+	}
+}
+
 };
 }

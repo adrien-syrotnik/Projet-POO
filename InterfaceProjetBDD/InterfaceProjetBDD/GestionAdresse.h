@@ -11,7 +11,7 @@ public:
 
     String^ getTableName();
     array<Adresse^>^ getAdressePersonnel(int);
+    array<Adresse^>^ getAdresseClient(int,String^);
     void addAdress();
-    //void persist(int);
 };
 

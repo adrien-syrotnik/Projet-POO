@@ -36,6 +36,7 @@ Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
     getTableName(): PrivateScope, Public, HideBySig
     getAdressePersonnel(Int32): PrivateScope, Public, HideBySig
+    getAdresseClient(Int32, String): PrivateScope, Public, HideBySig
     addAdress(): PrivateScope, Public, HideBySig
 Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -92,6 +92,9 @@
     <ClInclude Include="Resource.h">
       <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClInclude>
+    <ClInclude Include="Paiement.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InterfaceProjetBDD.cpp">
@@ -153,6 +156,9 @@
     </ClCompile>
     <ClCompile Include="GestionPersonnel.cpp">
       <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Paiement.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
