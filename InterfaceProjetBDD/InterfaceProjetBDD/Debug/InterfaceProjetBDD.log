@@ -1,5 +1,16 @@
 ﻿  MyForm.cpp
+<<<<<<< Updated upstream
   MyFormPersonnel.cpp
   Génération de code en cours...
   AssemblyInfo.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
   InterfaceProjetBDD.vcxproj -> D:\CESI\A2\projet 2\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe
+=======
+D:\CESI\A2\projet 2\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\GestionCommande.h(13,45): warning C4677: 'getCommandeClient' : la signature de membre non privée contient un type privé d'assembly 'Commande'
+D:\CESI\A2\projet 2\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Commande.h(5): message : voir la déclaration de 'Commande'
+  MyFormClient.cpp
+D:\CESI\A2\projet 2\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\GestionCommande.h(13,45): warning C4677: 'getCommandeClient' : la signature de membre non privée contient un type privé d'assembly 'Commande'
+D:\CESI\A2\projet 2\Projet-POO\InterfaceProjetBDD\InterfaceProjetBDD\Commande.h(5): message : voir la déclaration de 'Commande'
+  Génération de code en cours...
+  Adresse.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+  InterfaceProjetBDD.vcxproj -> D:\CESI\A2\projet 2\Projet-POO\InterfaceProjetBDD\Debug\InterfaceProjetBDD.exe
+>>>>>>> Stashed changes
