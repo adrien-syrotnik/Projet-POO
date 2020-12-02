@@ -101,6 +101,9 @@
     <ClInclude Include="VerifVille.h">
       <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
     </ClInclude>
+    <ClInclude Include="NombreArticle.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InterfaceProjetBDD.cpp">
@@ -171,6 +174,9 @@
     </ClCompile>
     <ClCompile Include="VerifVille.cpp">
       <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="NombreArticle.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

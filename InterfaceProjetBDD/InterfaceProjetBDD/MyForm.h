@@ -53,6 +53,10 @@ namespace InterfaceProjetBDD {
 	private: System::Windows::Forms::Label^ labelServeur;
 	private: System::Windows::Forms::Label^ labelBDD;
 	private: System::Windows::Forms::ComboBox^ comboBoxBDD;
+	private: System::Windows::Forms::Label^ label1;
+
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::TextBox^ textBox1;
 
 
 
@@ -87,6 +91,9 @@ namespace InterfaceProjetBDD {
 			this->labelServeur = (gcnew System::Windows::Forms::Label());
 			this->labelBDD = (gcnew System::Windows::Forms::Label());
 			this->comboBoxBDD = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->errorProvider1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -208,11 +215,46 @@ namespace InterfaceProjetBDD {
 			this->comboBoxBDD->Text = L"PROJETTT";
 			this->comboBoxBDD->TextChanged += gcnew System::EventHandler(this, &MyForm::comboBoxBDD_TextChanged);
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"sa2", L"sa" });
+			this->comboBox1->Location = System::Drawing::Point(602, 227);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(122, 21);
+			this->comboBox1->TabIndex = 10;
+			this->comboBox1->Text = L"sa2";
+			this->comboBox1->TextUpdate += gcnew System::EventHandler(this, &MyForm::comboBox1_TextUpdate);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(602, 199);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(122, 26);
+			this->label1->TabIndex = 12;
+			this->label1->Text = L"Identifiants";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(602, 255);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->PasswordChar = '*';
+			this->textBox1->Size = System::Drawing::Size(122, 20);
+			this->textBox1->TabIndex = 13;
+			this->textBox1->Text = L"azerty123";
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1389, 638);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->labelBDD);
 			this->Controls->Add(this->comboBoxBDD);
 			this->Controls->Add(this->labelServeur);
@@ -262,6 +304,13 @@ private: System::Void comboBoxServeur_TextChanged(System::Object^ sender, System
 }
 private: System::Void comboBoxBDD_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	CL_CAD::nomBDD = comboBoxBDD->Text;
+}
+private: System::Void comboBox1_TextUpdate(System::Object^ sender, System::EventArgs^ e) {
+	CL_CAD::identifiant = comboBox1->Text;
+}
+
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	CL_CAD::motdepasse = textBox1->Text;
 }
 };
 }

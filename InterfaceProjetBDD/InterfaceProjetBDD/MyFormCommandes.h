@@ -1,5 +1,10 @@
 #pragma once
 
+#include "GestionCommande.h"
+#include "GestionArticle.h"
+#include "NombreArticle.h"
+#include "GestionAdresse.h"
+
 namespace InterfaceProjetBDD {
 
 	using namespace System;
@@ -39,15 +44,15 @@ namespace InterfaceProjetBDD {
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
 	private: System::Windows::Forms::DataGridView^ dataGridView3;
 	private: System::Windows::Forms::DataGridView^ dataGridView4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ reference;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateLivraison;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateReglement;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateAchat;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantHT;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTVA;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTTC;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nomClient;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ prenomClient;
+
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ codePostal1;
@@ -71,14 +76,23 @@ namespace InterfaceProjetBDD {
 	private: System::Windows::Forms::Button^ buttonAjouterCommande;
 	private: System::Windows::Forms::Button^ buttonValidation;
 	private: System::Windows::Forms::TextBox^ textBoxReference;
-	private: System::Windows::Forms::TextBox^ textBoxMontantTVA;
-	private: System::Windows::Forms::TextBox^ textBoxMontantHT;
+
+
 	private: System::Windows::Forms::TextBox^ textBoxDateAchatCommande;
 	private: System::Windows::Forms::TextBox^ textBoxDateEnregistrementReglement;
 	private: System::Windows::Forms::TextBox^ textBoxDateLivraison;
-	private: System::Windows::Forms::TextBox^ textBoxNomClient;
-	private: System::Windows::Forms::TextBox^ textBoxMontantTTC;
+
+
 	private: System::Windows::Forms::TextBox^ textBoxPrenomClient;
+	private: System::Windows::Forms::DataGridView^ dataGridView5;
+
+
+
+
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
 
 
 
@@ -92,6 +106,24 @@ namespace InterfaceProjetBDD {
 		/// Variable nécessaire au concepteur.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		GestionCommande^ GestionC = gcnew GestionCommande;
+		GestionArticle^ GestionArt = gcnew GestionArticle;
+		GestionAdresse^ GestionA = gcnew GestionAdresse;
+		Commande^ CommandeModifier = gcnew Commande;
+		array<NombreArticle^>^ TabArticleModifier;
+
+
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ reference;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateLivraison;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateReglement;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateAchat;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantHT;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTVA;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ montantTTC;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nomClient;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ prenomClient;
+		   Adresse^ AdresseFacturation = gcnew Adresse;
+		Adresse^ AdresseLivraison = gcnew Adresse;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -102,12 +134,38 @@ namespace InterfaceProjetBDD {
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pays1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->codePostal1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ville1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->ligne2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pays2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->codePostal2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ville2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView4 = (gcnew System::Windows::Forms::DataGridView());
+			this->nomArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->quantite = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->prixArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->remise = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->buttonModifierCommande = (gcnew System::Windows::Forms::Button());
+			this->buttonSupprimerCommande = (gcnew System::Windows::Forms::Button());
+			this->buttonAjouterCommande = (gcnew System::Windows::Forms::Button());
+			this->buttonValidation = (gcnew System::Windows::Forms::Button());
+			this->textBoxReference = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDateAchatCommande = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDateEnregistrementReglement = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxDateLivraison = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxPrenomClient = (gcnew System::Windows::Forms::TextBox());
+			this->dataGridView5 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->reference = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dateLivraison = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dateReglement = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -117,39 +175,16 @@ namespace InterfaceProjetBDD {
 			this->montantTTC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->nomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->prenomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->pays1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->codePostal1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ville1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ligne2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->pays2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->codePostal2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ville2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->nomArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->quantite = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->prixArticle = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->remise = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->buttonModifierCommande = (gcnew System::Windows::Forms::Button());
-			this->buttonSupprimerCommande = (gcnew System::Windows::Forms::Button());
-			this->buttonAjouterCommande = (gcnew System::Windows::Forms::Button());
-			this->buttonValidation = (gcnew System::Windows::Forms::Button());
-			this->textBoxReference = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxMontantTVA = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxMontantHT = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxDateAchatCommande = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxDateEnregistrementReglement = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxDateLivraison = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxNomClient = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxMontantTTC = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxPrenomClient = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
 				this->reference,
@@ -158,8 +193,10 @@ namespace InterfaceProjetBDD {
 			});
 			this->dataGridView1->Location = System::Drawing::Point(12, 57);
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->Size = System::Drawing::Size(943, 410);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormCommandes::dataGridView1_CellClick);
 			// 
 			// dataGridView2
 			// 
@@ -168,125 +205,11 @@ namespace InterfaceProjetBDD {
 				this->ligne1,
 					this->pays1, this->codePostal1, this->ville1
 			});
-			this->dataGridView2->Location = System::Drawing::Point(987, 57);
+			this->dataGridView2->Location = System::Drawing::Point(987, 45);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->ReadOnly = true;
 			this->dataGridView2->Size = System::Drawing::Size(539, 66);
 			this->dataGridView2->TabIndex = 1;
-			// 
-			// dataGridView3
-			// 
-			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->ligne2,
-					this->pays2, this->codePostal2, this->ville2
-			});
-			this->dataGridView3->Location = System::Drawing::Point(987, 171);
-			this->dataGridView3->Name = L"dataGridView3";
-			this->dataGridView3->ReadOnly = true;
-			this->dataGridView3->Size = System::Drawing::Size(539, 66);
-			this->dataGridView3->TabIndex = 2;
-			// 
-			// dataGridView4
-			// 
-			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView4->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->nomArticle,
-					this->quantite, this->prixArticle, this->remise
-			});
-			this->dataGridView4->Location = System::Drawing::Point(987, 275);
-			this->dataGridView4->Name = L"dataGridView4";
-			this->dataGridView4->Size = System::Drawing::Size(539, 192);
-			this->dataGridView4->TabIndex = 3;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(1178, 251);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(189, 21);
-			this->label1->TabIndex = 14;
-			this->label1->Text = L"Articles de la commande";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(1118, 147);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(302, 21);
-			this->label2->TabIndex = 15;
-			this->label2->Text = L"Adresse de facturation de la commande";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(1118, 33);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(278, 21);
-			this->label3->TabIndex = 16;
-			this->label3->Text = L"Adresse de livraison de la commande";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(412, 33);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(91, 21);
-			this->label4->TabIndex = 17;
-			this->label4->Text = L"Commandes\r\n";
-			// 
-			// reference
-			// 
-			this->reference->HeaderText = L"Référence";
-			this->reference->Name = L"reference";
-			// 
-			// dateLivraison
-			// 
-			this->dateLivraison->HeaderText = L"Date prévue de la livraison";
-			this->dateLivraison->Name = L"dateLivraison";
-			// 
-			// dateReglement
-			// 
-			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
-			this->dateReglement->Name = L"dateReglement";
-			// 
-			// dateAchat
-			// 
-			this->dateAchat->HeaderText = L"Date de l\'achat de la commande";
-			this->dateAchat->Name = L"dateAchat";
-			// 
-			// montantHT
-			// 
-			this->montantHT->HeaderText = L"Montant HT";
-			this->montantHT->Name = L"montantHT";
-			// 
-			// montantTVA
-			// 
-			this->montantTVA->HeaderText = L"Montant TVA";
-			this->montantTVA->Name = L"montantTVA";
-			// 
-			// montantTTC
-			// 
-			this->montantTTC->HeaderText = L"Montant TTC";
-			this->montantTTC->Name = L"montantTTC";
-			// 
-			// nomClient
-			// 
-			this->nomClient->HeaderText = L"Nom du client";
-			this->nomClient->Name = L"nomClient";
-			// 
-			// prenomClient
-			// 
-			this->prenomClient->HeaderText = L"Prénom du client";
-			this->prenomClient->Name = L"prenomClient";
 			// 
 			// ligne1
 			// 
@@ -313,6 +236,19 @@ namespace InterfaceProjetBDD {
 			this->ville1->Name = L"ville1";
 			this->ville1->ReadOnly = true;
 			// 
+			// dataGridView3
+			// 
+			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->ligne2,
+					this->pays2, this->codePostal2, this->ville2
+			});
+			this->dataGridView3->Location = System::Drawing::Point(987, 138);
+			this->dataGridView3->Name = L"dataGridView3";
+			this->dataGridView3->ReadOnly = true;
+			this->dataGridView3->Size = System::Drawing::Size(539, 66);
+			this->dataGridView3->TabIndex = 2;
+			// 
 			// ligne2
 			// 
 			this->ligne2->HeaderText = L"Ligne";
@@ -338,6 +274,18 @@ namespace InterfaceProjetBDD {
 			this->ville2->Name = L"ville2";
 			this->ville2->ReadOnly = true;
 			// 
+			// dataGridView4
+			// 
+			this->dataGridView4->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView4->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->nomArticle,
+					this->quantite, this->prixArticle, this->remise
+			});
+			this->dataGridView4->Location = System::Drawing::Point(999, 231);
+			this->dataGridView4->Name = L"dataGridView4";
+			this->dataGridView4->Size = System::Drawing::Size(515, 192);
+			this->dataGridView4->TabIndex = 3;
+			// 
 			// nomArticle
 			// 
 			this->nomArticle->HeaderText = L"Nom de l\'article";
@@ -359,6 +307,50 @@ namespace InterfaceProjetBDD {
 			// 
 			this->remise->HeaderText = L"Remise sur l\'article";
 			this->remise->Name = L"remise";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(1178, 207);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(189, 21);
+			this->label1->TabIndex = 14;
+			this->label1->Text = L"Articles de la commande";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(1118, 114);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(302, 21);
+			this->label2->TabIndex = 15;
+			this->label2->Text = L"Adresse de facturation de la commande";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(1118, 21);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(278, 21);
+			this->label3->TabIndex = 16;
+			this->label3->Text = L"Adresse de livraison de la commande";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(412, 33);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(91, 21);
+			this->label4->TabIndex = 17;
+			this->label4->Text = L"Commandes\r\n";
 			// 
 			// buttonModifierCommande
 			// 
@@ -417,22 +409,6 @@ namespace InterfaceProjetBDD {
 			this->textBoxReference->TabIndex = 22;
 			this->textBoxReference->Visible = false;
 			// 
-			// textBoxMontantTVA
-			// 
-			this->textBoxMontantTVA->Location = System::Drawing::Point(549, 473);
-			this->textBoxMontantTVA->Name = L"textBoxMontantTVA";
-			this->textBoxMontantTVA->Size = System::Drawing::Size(97, 20);
-			this->textBoxMontantTVA->TabIndex = 23;
-			this->textBoxMontantTVA->Visible = false;
-			// 
-			// textBoxMontantHT
-			// 
-			this->textBoxMontantHT->Location = System::Drawing::Point(446, 473);
-			this->textBoxMontantHT->Name = L"textBoxMontantHT";
-			this->textBoxMontantHT->Size = System::Drawing::Size(97, 20);
-			this->textBoxMontantHT->TabIndex = 24;
-			this->textBoxMontantHT->Visible = false;
-			// 
 			// textBoxDateAchatCommande
 			// 
 			this->textBoxDateAchatCommande->Location = System::Drawing::Point(343, 473);
@@ -457,22 +433,6 @@ namespace InterfaceProjetBDD {
 			this->textBoxDateLivraison->TabIndex = 27;
 			this->textBoxDateLivraison->Visible = false;
 			// 
-			// textBoxNomClient
-			// 
-			this->textBoxNomClient->Location = System::Drawing::Point(755, 473);
-			this->textBoxNomClient->Name = L"textBoxNomClient";
-			this->textBoxNomClient->Size = System::Drawing::Size(97, 20);
-			this->textBoxNomClient->TabIndex = 28;
-			this->textBoxNomClient->Visible = false;
-			// 
-			// textBoxMontantTTC
-			// 
-			this->textBoxMontantTTC->Location = System::Drawing::Point(652, 473);
-			this->textBoxMontantTTC->Name = L"textBoxMontantTTC";
-			this->textBoxMontantTTC->Size = System::Drawing::Size(97, 20);
-			this->textBoxMontantTTC->TabIndex = 29;
-			this->textBoxMontantTTC->Visible = false;
-			// 
 			// textBoxPrenomClient
 			// 
 			this->textBoxPrenomClient->Location = System::Drawing::Point(858, 473);
@@ -481,19 +441,111 @@ namespace InterfaceProjetBDD {
 			this->textBoxPrenomClient->TabIndex = 30;
 			this->textBoxPrenomClient->Visible = false;
 			// 
+			// dataGridView5
+			// 
+			this->dataGridView5->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView5->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->dataGridViewTextBoxColumn1,
+					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3
+			});
+			this->dataGridView5->Location = System::Drawing::Point(999, 463);
+			this->dataGridView5->Name = L"dataGridView5";
+			this->dataGridView5->Size = System::Drawing::Size(515, 103);
+			this->dataGridView5->TabIndex = 31;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this->dataGridViewTextBoxColumn1->HeaderText = L"Date";
+			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this->dataGridViewTextBoxColumn2->HeaderText = L"Moyen de Paiement";
+			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->Width = 250;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Montant";
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			this->dataGridViewTextBoxColumn3->Width = 120;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(1206, 436);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(119, 21);
+			this->label5->TabIndex = 32;
+			this->label5->Text = L"Info Paiements";
+			// 
+			// reference
+			// 
+			this->reference->HeaderText = L"Référence";
+			this->reference->Name = L"reference";
+			this->reference->ReadOnly = true;
+			// 
+			// dateLivraison
+			// 
+			this->dateLivraison->HeaderText = L"Date prévue de la livraison";
+			this->dateLivraison->Name = L"dateLivraison";
+			this->dateLivraison->ReadOnly = true;
+			// 
+			// dateReglement
+			// 
+			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
+			this->dateReglement->Name = L"dateReglement";
+			this->dateReglement->ReadOnly = true;
+			// 
+			// dateAchat
+			// 
+			this->dateAchat->HeaderText = L"Date de l\'achat de la commande";
+			this->dateAchat->Name = L"dateAchat";
+			this->dateAchat->ReadOnly = true;
+			// 
+			// montantHT
+			// 
+			this->montantHT->HeaderText = L"Montant HT";
+			this->montantHT->Name = L"montantHT";
+			this->montantHT->ReadOnly = true;
+			// 
+			// montantTVA
+			// 
+			this->montantTVA->HeaderText = L"Montant TVA";
+			this->montantTVA->Name = L"montantTVA";
+			this->montantTVA->ReadOnly = true;
+			// 
+			// montantTTC
+			// 
+			this->montantTTC->HeaderText = L"Montant TTC";
+			this->montantTTC->Name = L"montantTTC";
+			this->montantTTC->ReadOnly = true;
+			// 
+			// nomClient
+			// 
+			this->nomClient->HeaderText = L"Nom du client";
+			this->nomClient->Name = L"nomClient";
+			this->nomClient->ReadOnly = true;
+			// 
+			// prenomClient
+			// 
+			this->prenomClient->HeaderText = L"ID Client";
+			this->prenomClient->Name = L"prenomClient";
+			this->prenomClient->ReadOnly = true;
+			// 
 			// MyFormCommandes
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1538, 588);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->dataGridView5);
 			this->Controls->Add(this->textBoxPrenomClient);
-			this->Controls->Add(this->textBoxMontantTTC);
-			this->Controls->Add(this->textBoxNomClient);
 			this->Controls->Add(this->textBoxDateLivraison);
 			this->Controls->Add(this->textBoxDateEnregistrementReglement);
 			this->Controls->Add(this->textBoxDateAchatCommande);
-			this->Controls->Add(this->textBoxMontantHT);
-			this->Controls->Add(this->textBoxMontantTVA);
 			this->Controls->Add(this->textBoxReference);
 			this->Controls->Add(this->buttonValidation);
 			this->Controls->Add(this->buttonAjouterCommande);
@@ -514,9 +566,15 @@ namespace InterfaceProjetBDD {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+
+			majDataViewCommande(GestionC->getCommandes());
+			majDataViewNombreArticle(GestionArt->getNombreArticleCommande(GestionC->getCommandes()[0]->getID()));
+			majDataViewAdresseCommande(GestionA->getAdresse(GestionC->getCommandes()[0]->getID(), "Commande", ""), dataGridView2);
+			majDataViewAdresseCommande(GestionA->getAdresse(GestionC->getCommandes()[0]->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
 		}
 #pragma endregion
 
@@ -530,10 +588,6 @@ namespace InterfaceProjetBDD {
 		this->textBoxDateLivraison->Visible = !this->textBoxDateLivraison->Visible;
 		this->textBoxDateEnregistrementReglement->Visible = !this->textBoxDateEnregistrementReglement->Visible;
 		this->textBoxDateAchatCommande->Visible = !this->textBoxDateAchatCommande->Visible;
-		this->textBoxMontantHT->Visible = !this->textBoxMontantHT->Visible;
-		this->textBoxMontantTVA->Visible = !this->textBoxMontantTVA->Visible;
-		this->textBoxMontantTTC->Visible = !this->textBoxMontantTTC->Visible;
-		this->textBoxNomClient->Visible = !this->textBoxNomClient->Visible;
 		this->textBoxPrenomClient->Visible = !this->textBoxPrenomClient->Visible;
 		buttonValidation->Visible = !buttonValidation->Visible;
 
@@ -541,12 +595,12 @@ namespace InterfaceProjetBDD {
 		this->textBoxDateLivraison->Text = "";
 		this->textBoxDateEnregistrementReglement->Text = "";
 		this->textBoxDateAchatCommande->Text = "";
-		this->textBoxMontantHT->Text = "";
-		this->textBoxMontantTVA->Text = "";
-		this->textBoxMontantTTC->Text = "";
-		this->textBoxNomClient->Text = "";
 		this->textBoxPrenomClient->Text = "";
 
+		dataGridView4->Rows->Clear();
+		dataGridView2->Rows->Clear();
+		dataGridView3->Rows->Clear();
+		dataGridView1->ClearSelection();
 		nomFonction = "AJOUTER";
 	}
 private: System::Void buttonSupprimerCommande_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -560,10 +614,6 @@ private: System::Void buttonModifierCommande_Click(System::Object^ sender, Syste
 	this->textBoxDateLivraison->Visible = !this->textBoxDateLivraison->Visible;
 	this->textBoxDateEnregistrementReglement->Visible = !this->textBoxDateEnregistrementReglement->Visible;
 	this->textBoxDateAchatCommande->Visible = !this->textBoxDateAchatCommande->Visible;
-	this->textBoxMontantHT->Visible = !this->textBoxMontantHT->Visible;
-	this->textBoxMontantTVA->Visible = !this->textBoxMontantTVA->Visible;
-	this->textBoxMontantTTC->Visible = !this->textBoxMontantTTC->Visible;
-	this->textBoxNomClient->Visible = !this->textBoxNomClient->Visible;
 	this->textBoxPrenomClient->Visible = !this->textBoxPrenomClient->Visible;
 	this->buttonValidation->Visible = !this->buttonValidation->Visible;
 
@@ -572,6 +622,19 @@ private: System::Void buttonModifierCommande_Click(System::Object^ sender, Syste
 	etc...*/
 	
 	nomFonction = "MODIFIER";
+
+	int IndexActuel = dataGridView1->CurrentCell->RowIndex;
+	CommandeModifier = GestionC->getCommandes()[IndexActuel];
+
+
+	this->textBoxReference->Text = CommandeModifier->getReference();
+	this->textBoxDateLivraison->Text = CommandeModifier->getDatePrevueLivraison();
+	this->textBoxDateEnregistrementReglement->Text = CommandeModifier->getDateReglementEnregistre();
+	this->textBoxDateAchatCommande->Text = CommandeModifier->getDateAchatCommande();
+	this->textBoxPrenomClient->Text = Convert::ToString(CommandeModifier->getID_Client());
+
+
+
 }
 private: System::Void buttonValidation_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (MessageBox::Show("Voulez-vous vraiment " + nomFonction + " cet article ? ", nomFonction + " un article", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
@@ -582,13 +645,91 @@ private: System::Void buttonValidation_Click(System::Object^ sender, System::Eve
 		this->textBoxDateLivraison->Visible = !this->textBoxDateLivraison->Visible;
 		this->textBoxDateEnregistrementReglement->Visible = !this->textBoxDateEnregistrementReglement->Visible;
 		this->textBoxDateAchatCommande->Visible = !this->textBoxDateAchatCommande->Visible;
-		this->textBoxMontantHT->Visible = !this->textBoxMontantHT->Visible;
-		this->textBoxMontantTVA->Visible = !this->textBoxMontantTVA->Visible;
-		this->textBoxMontantTTC->Visible = !this->textBoxMontantTTC->Visible;
-		this->textBoxNomClient->Visible = !this->textBoxNomClient->Visible;
 		this->textBoxPrenomClient->Visible = !this->textBoxPrenomClient->Visible;
 		this->buttonValidation->Visible = !this->buttonValidation->Visible;
+
+
+		
+		TabArticleModifier = gcnew array<NombreArticle^>(dataGridView4->RowCount-1);
+
+
+		for (int i = 0; i < TabArticleModifier->Length; i++) {
+			TabArticleModifier[i] = gcnew NombreArticle;
+			TabArticleModifier[i]->article->setNom(dataGridView4->Rows[i]->Cells[0]->Value->ToString());
+			TabArticleModifier[i]->Quantite = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[1]->Value));
+			TabArticleModifier[i]->Prix = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[2]->Value));
+			TabArticleModifier[i]->Remise = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[3]->Value));
+		}
+
 	}
+
+}
+
+
+private: void majDataViewCommande(array<Commande^>^ TableauCommande) {
+
+	dataGridView1->Rows->Clear();
+
+	for (int ligne = 0; ligne < TableauCommande->Length; ligne++) {
+
+		dataGridView1->Rows->Add();
+
+		dataGridView1->Rows[ligne]->Cells[0]->Value = TableauCommande[ligne]->getReference();
+		dataGridView1->Rows[ligne]->Cells[1]->Value = TableauCommande[ligne]->getDatePrevueLivraison();
+		dataGridView1->Rows[ligne]->Cells[2]->Value = TableauCommande[ligne]->getDateReglementEnregistre();
+		dataGridView1->Rows[ligne]->Cells[3]->Value = TableauCommande[ligne]->getDateAchatCommande();
+		dataGridView1->Rows[ligne]->Cells[4]->Value = TableauCommande[ligne]->getMontantHT() + " €";
+		dataGridView1->Rows[ligne]->Cells[5]->Value = TableauCommande[ligne]->getMontantTVA() + " €";
+		dataGridView1->Rows[ligne]->Cells[6]->Value = TableauCommande[ligne]->getMontantTTC() + " €";
+		dataGridView1->Rows[ligne]->Cells[7]->Value = TableauCommande[ligne]->getNom();
+		dataGridView1->Rows[ligne]->Cells[8]->Value = TableauCommande[ligne]->getID_Client();
+	}
+}
+
+
+private: void majDataViewNombreArticle(array<NombreArticle^>^ TableauArticle) {
+
+	dataGridView4->Rows->Clear();
+
+	for (int ligne = 0; ligne < TableauArticle->Length; ligne++) {
+
+		dataGridView4->Rows->Add();
+
+		dataGridView4->Rows[ligne]->Cells[0]->Value = TableauArticle[ligne]->article->getNom();
+		dataGridView4->Rows[ligne]->Cells[1]->Value = TableauArticle[ligne]->Quantite;
+		dataGridView4->Rows[ligne]->Cells[2]->Value = TableauArticle[ligne]->Prix + " €";
+		dataGridView4->Rows[ligne]->Cells[3]->Value = TableauArticle[ligne]->Remise;
+
+	}
+}
+
+
+private: void majDataViewAdresseCommande(array<Adresse^>^ TableauAdresse,DataGridView^ D) {
+	
+	D->Rows->Clear();
+
+	for (int ligne = 0; ligne < TableauAdresse->Length; ligne++) {
+
+		D->Rows->Add();
+
+		D->Rows[ligne]->Cells[0]->Value = TableauAdresse[ligne]->getLigneAdresse();
+		D->Rows[ligne]->Cells[1]->Value = TableauAdresse[ligne]->getPays();
+		D->Rows[ligne]->Cells[2]->Value = TableauAdresse[ligne]->getCP();
+		D->Rows[ligne]->Cells[3]->Value = TableauAdresse[ligne]->getVille();
+
+	}
+}
+
+
+
+
+private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+	int IndexActuel = dataGridView1->CurrentCell->RowIndex;
+	CommandeModifier = GestionC->getCommandes()[IndexActuel];
+	majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
+	majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
+	majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
 
 }
 };

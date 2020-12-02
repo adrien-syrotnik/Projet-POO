@@ -15,6 +15,8 @@ private:
     int ID_Client;
     int ID_AdresseLivraison;
     int ID_AdresseFacturation;
+
+    String^ Nom;
   
 public:
     Commande();
@@ -29,12 +31,12 @@ public:
     void setDateReglementEnregistre(String^ Date);
     String^ getDateAchatCommande();
     void setDateAchatCommande(String^ Date);
-    void setMontantTVA(int);
-    int getMontantTVA();
-    void setMontantTTC(int);
-    int getMontantTTC();
-    void setMontantHT(int);
-    int getMontantHT();
+    void setMontantTVA(double);
+    double getMontantTVA();
+    void setMontantTTC(double);
+    double getMontantTTC();
+    void setMontantHT(double);
+    double getMontantHT();
     void setID_Client(int);
     int getID_Client();
     void setID_AdresseLivraison(int);
@@ -42,7 +44,8 @@ public:
     void setID_AdresseFacturation(int);
     int getID_AdresseFacturation();
 
-    
+    void setNom(String^);
+    String^ getNom();
 
 
 };

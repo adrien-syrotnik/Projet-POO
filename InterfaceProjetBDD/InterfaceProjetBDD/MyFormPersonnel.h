@@ -316,7 +316,7 @@ namespace InterfaceProjetBDD {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 			majDataViewPersonnel(GestionP->getPersonnels());
-			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+			majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 
 		}
 #pragma endregion
@@ -357,7 +357,7 @@ private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, Sys
 		GestionP->del(PersonnelModif);
 
 		majDataViewPersonnel(GestionP->getPersonnels());
-		majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+		majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 		
 	}
 }
@@ -373,7 +373,7 @@ private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, Sys
 		   int indexActuel = dataGridView1->CurrentCell->RowIndex;
 		   //ATTRIBUTION DES DONNEES PAR RAPPORT A CELUI SELECTIONNE
 		   PersonnelModif = GestionP->getPersonnels()[indexActuel];
-		   AdresseModif = GestionA->getAdressePersonnel(PersonnelModif->getID())[0];
+		   AdresseModif = GestionA->getAdresse(PersonnelModif->getID(), "Personnel", "")[0];
 
 
 		   this->NomPersonnel->Text = PersonnelModif->getNom();
@@ -415,7 +415,7 @@ private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, Sys
 
 			GestionP->persist(PersonnelModif, AdresseModif);
 			majDataViewPersonnel(GestionP->getPersonnels());
-			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+			majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 
 		}
 
@@ -475,7 +475,7 @@ private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, Sys
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 	int IndexActu = dataGridView1->CurrentCell->RowIndex;
-	majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[IndexActu]->getID()));
+	majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[IndexActu]->getID(), "Personnel", ""));
 	
 
 }

@@ -36,7 +36,7 @@ Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getTableName(): PrivateScope, Public, HideBySig
-    getAdressePersonnel(Int32): PrivateScope, Public, HideBySig
+    getAdresse(Int32, String, String): PrivateScope, Public, HideBySig
     getAdresseClient(Int32, String): PrivateScope, Public, HideBySig
     addAdress(): PrivateScope, Public, HideBySig
 Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -44,6 +44,8 @@ Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
     getTableName(): PrivateScope, Public, HideBySig
     getCommandeClient(Int32): PrivateScope, Public, HideBySig
+    getCommandes(): PrivateScope, Public, HideBySig
+    getClientNameCommande(Int32): PrivateScope, Public, HideBySig
 Class InterfaceProjetBDD.MyFormPersonnel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

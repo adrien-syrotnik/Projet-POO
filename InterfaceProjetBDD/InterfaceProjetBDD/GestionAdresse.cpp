@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "GestionAdresse.h"
 
-array<Adresse^>^ GestionAdresse::getAdressePersonnel(int IdClient)
+array<Adresse^>^ GestionAdresse::getAdresse(int IdClient,String^ Table,String^ TypeAdresse)
 {
     String^ tableName = getTableName();
     //Requête pour récupérer à partir de Sql Server 
     //le DataSet contenant les Clients
     CL_CAD^ connexion = gcnew CL_CAD();
-    DataSet^ ds = connexion->getRows("SELECT Adresse.ID,Ligne1, Pays, CodePostal, Ville FROM Personnel INNER JOIN Adresse ON Adresse.ID = Personnel.ID_Adresse WHERE Personnel.ID =" + IdClient + ";", tableName);
+    DataSet^ ds = connexion->getRows("SELECT Adresse.ID,Ligne1, Pays, CodePostal, Ville FROM "+Table+" INNER JOIN Adresse ON Adresse.ID = " + Table + ".ID_Adresse"+TypeAdresse+" WHERE " + Table + ".ID =" + IdClient + ";", tableName);
 
     //SELECT * FROM Client_Adresse INNER JOIN Adresse ON Client_Adresse.ID = Adresse.ID WHERE Client_Adresse.ID_Client = 1;
 

@@ -10,7 +10,7 @@ private:
 public:
 
     String^ getTableName();
-    array<Adresse^>^ getAdressePersonnel(int);
+    array<Adresse^>^ getAdresse(int,String^,String^);
     array<Adresse^>^ getAdresseClient(int,String^);
     void addAdress();
 };

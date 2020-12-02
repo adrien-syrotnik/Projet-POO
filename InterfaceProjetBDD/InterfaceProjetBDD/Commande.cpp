@@ -13,6 +13,7 @@ Commande::Commande()
     this->MontantHT = 0;
     this->MontantTTC = 0;
     this->MontantTVA = 0;
+    this->Nom = "";
 
 
 }
@@ -75,27 +76,27 @@ void Commande::setDateAchatCommande(String^ Ref)
     this->DateAchatCommande = Ref;
 }
 
-void Commande::setMontantTVA(int M)
+void Commande::setMontantTVA(double M)
 {
     this->MontantTVA = M;
 }
-int Commande::getMontantTVA()
+double Commande::getMontantTVA()
 {
     return this->MontantTVA;
 }
-void Commande::setMontantTTC(int M)
+void Commande::setMontantTTC(double M)
 {
     this->MontantTTC = M;
 }
-int Commande::getMontantTTC()
+double Commande::getMontantTTC()
 {
     return this->MontantTTC;
 }
-void Commande::setMontantHT(int M)
+void Commande::setMontantHT(double M)
 {
     this->MontantHT = M;
 }
-int Commande::getMontantHT()
+double Commande::getMontantHT()
 {
     return this->MontantHT;
 }
@@ -125,3 +126,9 @@ int Commande::getID_AdresseFacturation()
     return this->ID_AdresseFacturation;
 }
 
+void Commande::setNom(String^ N) {
+    this->Nom = N;
+}
+String^ Commande::getNom() {
+    return this->Nom;
+}

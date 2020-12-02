@@ -2,6 +2,7 @@
 #include "Article.h"
 #include "CL_CAD.h"
 #include "PrixArticle.h"
+#include "NombreArticle.h"
 
 using namespace System::Data;
 using namespace System;
@@ -20,4 +21,5 @@ public:
     String^ getTableName();
     void persist(Article^);//, array<Adresse^>^);  
     void del(Article^);
+    array<NombreArticle^>^ getNombreArticleCommande(int IdCommande);
 };

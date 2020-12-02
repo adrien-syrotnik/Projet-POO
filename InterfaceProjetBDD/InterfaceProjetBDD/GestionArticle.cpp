@@ -46,6 +46,22 @@ array<prixArticle^>^ GestionArticle::getprixArticle(int IdArticle)
 }
 
 
+array<NombreArticle^>^ GestionArticle::getNombreArticleCommande(int IdCommande)
+{
+    String^ tableName = "Commande_Article";
+    CL_CAD^ connexion = gcnew CL_CAD();
+    DataSet^ ds = connexion->getRows("SELECT Commande_Article.ID_Articles,Quantite,PrixUnitaireHT,Remise,Nom,QuantiteStock,TVA FROM Commande_Article INNER JOIN Article ON Commande_Article.ID_Articles = Article.ID WHERE Commande_Article.ID =" + IdCommande + ";", tableName);
+
+    int size = ds->Tables[tableName]->Rows->Count;
+    array<NombreArticle^>^ NbrArticles = gcnew array<NombreArticle^>(size);
+
+    //remplir le tableau Clients à partir des Clients récupérée dans DS.
+    for (int i = 0; i < size; i++)
+        NbrArticles[i] = gcnew NombreArticle(ds->Tables[tableName]->Rows[i]);
+    return NbrArticles;
+}
+
+
 
 
 void GestionArticle::persist(Article^ Art)
@@ -59,7 +75,7 @@ void GestionArticle::persist(Article^ Art)
         //Insert
 
         //A->setID(connexion->insert("INSERT INTO Adresse (Ligne1,Pays,CodePostal,Ville) " + "VALUES('" + A->getLigneAdresse() + "','" + A->getPays() + "','" + A->getCP() + "','" + A->getVille() + "');SELECT @@IDENTITY;"));
-        Art->setID(connexion->insert("INSERT INTO Article (Reference,Nom,QuantiteStock,Designation,TVA,SeuilQuantite,TypeArticle,Supprimer) VALUES('" + Art->getReference() + "','" + Art->getNom() + "'," + Art->getQuantiteStock() + ",NULL,REPLACE('"+ Art->getTVA() +"',',','.'),'"+ Art->getSeuilQuantite() +"','"+ Art->GetType() +"','False');SELECT @@IDENTITY;"));
+        Art->setID(connexion->insert("INSERT INTO Article (Reference,Nom,QuantiteStock,Designation,TVA,SeuilQuantite,TypeArticle,Supprimer) VALUES('" + Art->getReference() + "','" + Art->getNom() + "'," + Art->getQuantiteStock() + ",NULL,REPLACE('"+ Art->getTVA() +"',',','.'),'"+ Art->getSeuilQuantite() +"','"+ Art->getTypeArticle() +"','False');SELECT @@IDENTITY;"));
     }
     else
     {
