@@ -574,8 +574,47 @@ private: System::Void validationButton_Click(System::Object^ sender, System::Eve
 	}
 }
 private: System::Void validationButtonAdresseLivraison_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+	array<Adresse^>^ TabArticleL = gcnew array<Adresse^>(dataGridView2->RowCount - 1);
+
+
+	for (int i = 0; i < TabArticleL->Length; i++) {
+		TabArticleL[i] = gcnew Adresse;
+		TabArticleL[i]->setLigneAdresse(dataGridView2->Rows[i]->Cells[0]->Value->ToString());
+		TabArticleL[i]->setPays(dataGridView2->Rows[i]->Cells[1]->Value->ToString());
+		TabArticleL[i]->setCP(dataGridView2->Rows[i]->Cells[2]->Value->ToString());
+		TabArticleL[i]->setVille(dataGridView2->Rows[i]->Cells[3]->Value->ToString());
+
+	}
+
+	
+
+	int IndexActu = dataGridView1->CurrentCell->RowIndex;
+	ClientActu = GestionC->getClients()[IndexActu];
+
+	GestionA->persist(TabArticleL, GestionC->getClients()[IndexActu]->getID(), "AdresseLivraison");
+
 }
 private: System::Void validationButtonAdresseFacturation_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	array<Adresse^>^ TabArticleF = gcnew array<Adresse^>(dataGridView3->RowCount - 1);
+
+	for (int i = 0; i < TabArticleF->Length; i++) {
+		TabArticleF[i] = gcnew Adresse;
+		TabArticleF[i]->setLigneAdresse(dataGridView3->Rows[i]->Cells[0]->Value->ToString());
+		TabArticleF[i]->setPays(dataGridView3->Rows[i]->Cells[1]->Value->ToString());
+		TabArticleF[i]->setCP(dataGridView3->Rows[i]->Cells[2]->Value->ToString());
+		TabArticleF[i]->setVille(dataGridView3->Rows[i]->Cells[3]->Value->ToString());
+
+	}
+
+
+	int IndexActu = dataGridView1->CurrentCell->RowIndex;
+	ClientActu = GestionC->getClients()[IndexActu];
+
+	GestionA->persist(TabArticleF, GestionC->getClients()[IndexActu]->getID(), "AdresseFacturation");
+
 }
 
 

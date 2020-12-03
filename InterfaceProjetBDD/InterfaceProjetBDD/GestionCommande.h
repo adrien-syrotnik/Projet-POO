@@ -19,7 +19,7 @@ public:
     array<Commande^>^ getCommandeClient(int);
     array<Commande^>^ getCommandes();
     array<String^>^ getClientNameCommande(int);
-    //array<Paiement^>^ getPaiementCommande(int);
+    array<Paiement^>^ getPaiementCommande(int);
     void persist(Commande^, array<NombreArticle^>^ NbrArticle,Adresse^,Adresse^);
     void del(Commande^);
 };

@@ -25,7 +25,7 @@ array<Commande^>^ GestionCommande::getCommandeClient(int IdClient)
 }
 
 
-/*array<Paiement^>^ GestionCommande::getPaiementCommande(int IdCommande) {
+array<Paiement^>^ GestionCommande::getPaiementCommande(int IdCommande) {
 
 
     String^ tableName = "Paiement";
@@ -43,7 +43,7 @@ array<Commande^>^ GestionCommande::getCommandeClient(int IdClient)
 
     return Commandes;
 
-}*/
+}
 
 array<Commande^>^ GestionCommande::getCommandes()
 {
@@ -131,7 +131,8 @@ void GestionCommande::persist(Commande^ C,array<NombreArticle^>^ NbrArticle,Adre
             //etape 4 MAJ du montant + remise
             MontantHT += ((NbrArticle[i]->Quantite * NbrArticle[i]->Prix) - (NbrArticle[i]->Quantite * NbrArticle[i]->Prix)*NbrArticle[i]->Remise);
             MontantTVA += ((NbrArticle[i]->Quantite * NbrArticle[i]->Prix) - (NbrArticle[i]->Quantite * NbrArticle[i]->Prix) * NbrArticle[i]->Remise) * NbrArticle[i]->article->getTVA();
-           
+            NbrArticle[i]->article->setQuantiteStock(NbrArticle[i]->article->getQuantiteStock() - NbrArticle[i]->Quantite);
+            GestionA->persist(NbrArticle[i]->article);
         }
             //etape 5 MAJ final de la commande + MAJ nom Reference
         array<String^>^ Str = getClientNameCommande(C->getID());

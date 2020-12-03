@@ -611,7 +611,7 @@ namespace InterfaceProjetBDD {
 			majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
 			majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
 			majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
-			//majDataViewPaiement(GestionC->getPaiementCommande(CommandeModifier->getID()),dataGridView5);
+			majDataViewPaiement2(GestionC->getPaiementCommande(CommandeModifier->getID()));
 
 		}
 #pragma endregion
@@ -729,6 +729,7 @@ private: System::Void buttonValidation_Click(System::Object^ sender, System::Eve
 		majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
 		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
 		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
+		majDataViewPaiement2(GestionC->getPaiementCommande(CommandeModifier->getID()));
 
 	}
 
@@ -789,7 +790,7 @@ private: void majDataViewAdresseCommande(array<Adresse^>^ TableauAdresse,DataGri
 	}
 }
 
-	   /*private: void majDataViewPaiement2(array<Paiement^>^ TableauPaiement) {
+	   private: void majDataViewPaiement2(array<Paiement^>^ TableauPaiement) {
 
 		   dataGridView5->Rows->Clear();
 
@@ -802,8 +803,7 @@ private: void majDataViewAdresseCommande(array<Adresse^>^ TableauAdresse,DataGri
 			   dataGridView5->Rows[ligne]->Cells[2]->Value = TableauPaiement[ligne]->getMontant() + " €";
 
 		   }
-	   }*/
-	   //private : void maj(array<Paiement^>^ T) {}
+	   }
 
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
@@ -812,6 +812,7 @@ private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Wi
 	majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
 	majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
 	majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
+	majDataViewPaiement2(GestionC->getPaiementCommande(CommandeModifier->getID()));
 
 }
 private: System::Void textBoxPrenomClient_TextChanged(System::Object^ sender, System::EventArgs^ e) {

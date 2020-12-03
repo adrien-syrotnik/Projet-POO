@@ -104,6 +104,9 @@
     <ClInclude Include="NombreArticle.h">
       <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
+    <ClInclude Include="StatsRequete.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InterfaceProjetBDD.cpp">
@@ -177,6 +180,9 @@
     </ClCompile>
     <ClCompile Include="NombreArticle.cpp">
       <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsRequete.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

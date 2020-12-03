@@ -161,6 +161,7 @@
     <ClInclude Include="Personnel.h" />
     <ClInclude Include="PrixArticle.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="StatsRequete.h" />
     <ClInclude Include="VerifVille.h" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,7 @@
     </ClCompile>
     <ClCompile Include="Personnel.cpp" />
     <ClCompile Include="PrixArticle.cpp" />
+    <ClCompile Include="StatsRequete.cpp" />
     <ClCompile Include="VerifVille.cpp" />
   </ItemGroup>
   <ItemGroup>

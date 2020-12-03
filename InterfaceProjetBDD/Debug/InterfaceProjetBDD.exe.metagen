@@ -38,7 +38,7 @@ Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getTableName(): PrivateScope, Public, HideBySig
     getAdresse(Int32, String, String): PrivateScope, Public, HideBySig
     getAdresseClient(Int32, String): PrivateScope, Public, HideBySig
-    addAdress(): PrivateScope, Public, HideBySig
+    persist(Adresse[], Int32, String): PrivateScope, Public, HideBySig
 Class Paiement: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(System.Data.DataRow): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -58,6 +58,7 @@ Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getCommandeClient(Int32): PrivateScope, Public, HideBySig
     getCommandes(): PrivateScope, Public, HideBySig
     getClientNameCommande(Int32): PrivateScope, Public, HideBySig
+    getPaiementCommande(Int32): PrivateScope, Public, HideBySig
     persist(Commande, NombreArticle[], Adresse, Adresse): PrivateScope, Public, HideBySig
     del(Commande): PrivateScope, Public, HideBySig
 Class InterfaceProjetBDD.MyFormPersonnel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -70,6 +71,33 @@ Class InterfaceProjetBDD.MyFormClient: AutoLayout, AnsiClass, Class, Public, Bef
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class InterfaceProjetBDD.MyFormStock: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsArticlesPlusVendus: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsArticlesMoinsVendus: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsCalculPanier: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsChiffreAffaire: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsMontantTotal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsProduitsInferieurSeuil: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsSimulation: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsValeurCommercialeStock: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfaceProjetBDD.MyFormStatsValeurAchatStock: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class InterfaceProjetBDD.MyFormStatistiques: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

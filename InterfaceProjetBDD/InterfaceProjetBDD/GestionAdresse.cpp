@@ -47,32 +47,21 @@ array<Adresse^>^ GestionAdresse::getAdresseClient(int IdClient,String^ AdresseTy
 
 
 
-/*
-void GestionAdresse::persist(int IdClient)
+
+void GestionAdresse::persist(array<Adresse^>^ TabAdresse,int IdClient,String^ Str)
 {
 
     CL_CAD^ connexion = gcnew CL_CAD();
-    if (this->ID == -1)
-    {
-        //Insert
-        this->ID = connexion->insert("INSERT INTO Adresse (Adresse,Ville,CP) " +
-            "VALUES('" + this->getLigneAdresse() + "','" + this->getVille() + "','" + this->getCP() + "');SELECT @@IDENTITY;");
 
-
-        this->id = connexion->insert("INSERT INTO Client_Adresse (ID,ID_Client) " +
-            "VALUES('" + this->id + "','" + IdClient + "');SELECT @@IDENTITY;");
-
-
-
+    for (int i = 0; i < TabAdresse->Length; i++) {
+        TabAdresse[i]->setID(connexion->insert("INSERT INTO Adresse (Ligne1,Pays,CodePostal,Ville) " + "VALUES('" + TabAdresse[i]->getLigneAdresse() + "','" + TabAdresse[i]->getPays() + "','" + TabAdresse[i]->getCP() + "','" + TabAdresse[i]->getVille() + "');SELECT @@IDENTITY;"));
+        connexion->update("INSERT INTO Client_"+ Str +"(ID, ID_Client) " + "VALUES('"+ TabAdresse[i]->getID() +"','"+ IdClient +"')");
 
     }
 
 
 
-}*/
-
-
-void GestionAdresse::addAdress() {
-
-
 }
+
+
+

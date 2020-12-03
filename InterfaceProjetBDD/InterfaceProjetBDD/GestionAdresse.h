@@ -12,6 +12,7 @@ public:
     String^ getTableName();
     array<Adresse^>^ getAdresse(int,String^,String^);
     array<Adresse^>^ getAdresseClient(int,String^);
-    void addAdress();
+    void GestionAdresse::persist(array<Adresse^>^ TabAdresse, int IdClient, String^);
+
 };
 
