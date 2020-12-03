@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "GestionPersonnel.h"
-#include <iostream>
 
 GestionPersonnel::GestionPersonnel() {
     connexion = gcnew CL_CAD();

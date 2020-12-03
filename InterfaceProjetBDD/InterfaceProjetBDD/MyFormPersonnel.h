@@ -2,7 +2,7 @@
 
 #include "GestionPersonnel.h"
 #include "GestionAdresse.h"
-
+#include "VerifVille.h"
 
 
 namespace InterfaceProjetBDD {
@@ -40,12 +40,9 @@ namespace InterfaceProjetBDD {
 				delete components;
 			}
 		}
-
-
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-
-
+	private: System::Windows::Forms::Button^ buttonAjouterPersonnel;
+	private: System::Windows::Forms::Button^ buttonSupprimerPersonnel;
+	protected:
 
 
 	private: System::Windows::Forms::TextBox^ NomPersonnel;
@@ -55,36 +52,11 @@ namespace InterfaceProjetBDD {
 	private: System::Windows::Forms::TextBox^ Superieur;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
-
-
-
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
 	private: System::Windows::Forms::Label^ label1;
 
-
-
-
-
 	private: System::Windows::Forms::Button^ majPersonnel;
 	private: System::Windows::Forms::Button^ validationButton;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -98,6 +70,8 @@ namespace InterfaceProjetBDD {
 		GestionPersonnel^ GestionP = gcnew GestionPersonnel;
 		GestionAdresse^ GestionA = gcnew GestionAdresse;
 		Personnel^ PersonnelModif = gcnew Personnel;
+		VerifVille^ Ville = gcnew VerifVille;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ligne1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ pays;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ cp;
@@ -122,14 +96,19 @@ namespace InterfaceProjetBDD {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->buttonAjouterPersonnel = (gcnew System::Windows::Forms::Button());
+			this->buttonSupprimerPersonnel = (gcnew System::Windows::Forms::Button());
 			this->NomPersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->PrenomPersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->AdressePersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->DateEmbauchePersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->Superieur = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Nom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Prénom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->DateEmbauche = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Supérieur = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pays = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -138,38 +117,33 @@ namespace InterfaceProjetBDD {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->majPersonnel = (gcnew System::Windows::Forms::Button());
 			this->validationButton = (gcnew System::Windows::Forms::Button());
-			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Nom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Prénom = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->DateEmbauche = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Supérieur = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// button2
+			// buttonAjouterPersonnel
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(560, 97);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(261, 50);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Ajouter un personnel";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyFormPersonnel::button2_Click);
+			this->buttonAjouterPersonnel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->buttonAjouterPersonnel->Location = System::Drawing::Point(560, 97);
+			this->buttonAjouterPersonnel->Name = L"buttonAjouterPersonnel";
+			this->buttonAjouterPersonnel->Size = System::Drawing::Size(261, 50);
+			this->buttonAjouterPersonnel->TabIndex = 2;
+			this->buttonAjouterPersonnel->Text = L"Ajouter un personnel";
+			this->buttonAjouterPersonnel->UseVisualStyleBackColor = true;
+			this->buttonAjouterPersonnel->Click += gcnew System::EventHandler(this, &MyFormPersonnel::buttonAjouterPersonnel_Click);
 			// 
-			// button3
+			// buttonSupprimerPersonnel
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(560, 183);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(261, 50);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Supprimer un personnel";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyFormPersonnel::button3_Click);
+			this->buttonSupprimerPersonnel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->buttonSupprimerPersonnel->Location = System::Drawing::Point(560, 183);
+			this->buttonSupprimerPersonnel->Name = L"buttonSupprimerPersonnel";
+			this->buttonSupprimerPersonnel->Size = System::Drawing::Size(261, 50);
+			this->buttonSupprimerPersonnel->TabIndex = 3;
+			this->buttonSupprimerPersonnel->Text = L"Supprimer un personnel";
+			this->buttonSupprimerPersonnel->UseVisualStyleBackColor = true;
+			this->buttonSupprimerPersonnel->Click += gcnew System::EventHandler(this, &MyFormPersonnel::buttonSupprimerPersonnel_Click);
 			// 
 			// NomPersonnel
 			// 
@@ -223,6 +197,32 @@ namespace InterfaceProjetBDD {
 			this->dataGridView1->Size = System::Drawing::Size(449, 300);
 			this->dataGridView1->TabIndex = 14;
 			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormPersonnel::dataGridView1_CellClick);
+			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"ID";
+			this->ID->Name = L"ID";
+			this->ID->Width = 30;
+			// 
+			// Nom
+			// 
+			this->Nom->HeaderText = L"Nom";
+			this->Nom->Name = L"Nom";
+			// 
+			// Prénom
+			// 
+			this->Prénom->HeaderText = L"Prénom";
+			this->Prénom->Name = L"Prénom";
+			// 
+			// DateEmbauche
+			// 
+			this->DateEmbauche->HeaderText = L"Date d\'embauche";
+			this->DateEmbauche->Name = L"DateEmbauche";
+			// 
+			// Supérieur
+			// 
+			this->Supérieur->HeaderText = L"Superieur";
+			this->Supérieur->Name = L"Supérieur";
 			// 
 			// dataGridView2
 			// 
@@ -293,32 +293,6 @@ namespace InterfaceProjetBDD {
 			this->validationButton->Visible = false;
 			this->validationButton->Click += gcnew System::EventHandler(this, &MyFormPersonnel::validationButton_Click);
 			// 
-			// ID
-			// 
-			this->ID->HeaderText = L"ID";
-			this->ID->Name = L"ID";
-			this->ID->Width = 30;
-			// 
-			// Nom
-			// 
-			this->Nom->HeaderText = L"Nom";
-			this->Nom->Name = L"Nom";
-			// 
-			// Prénom
-			// 
-			this->Prénom->HeaderText = L"Prénom";
-			this->Prénom->Name = L"Prénom";
-			// 
-			// DateEmbauche
-			// 
-			this->DateEmbauche->HeaderText = L"Date d\'embauche";
-			this->DateEmbauche->Name = L"DateEmbauche";
-			// 
-			// Supérieur
-			// 
-			this->Supérieur->HeaderText = L"Superieur";
-			this->Supérieur->Name = L"Supérieur";
-			// 
 			// MyFormPersonnel
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -333,28 +307,30 @@ namespace InterfaceProjetBDD {
 			this->Controls->Add(this->DateEmbauchePersonnel);
 			this->Controls->Add(this->PrenomPersonnel);
 			this->Controls->Add(this->NomPersonnel);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->buttonSupprimerPersonnel);
+			this->Controls->Add(this->buttonAjouterPersonnel);
 			this->Name = L"MyFormPersonnel";
 			this->Text = L"MyFormPersonnel";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 			majDataViewPersonnel(GestionP->getPersonnels());
-			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+			majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 
 		}
 #pragma endregion
+String^ nomFonction = "";
+
 	//AJOUTER UN PERSONNEL
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void buttonAjouterPersonnel_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->majPersonnel->Visible = !this->majPersonnel->Visible;
 		NomPersonnel->Visible = !NomPersonnel->Visible;
 		PrenomPersonnel->Visible = !PrenomPersonnel->Visible;
 		DateEmbauchePersonnel->Visible = !DateEmbauchePersonnel->Visible;
 		Superieur->Visible = !Superieur->Visible;
 		validationButton->Visible = !validationButton->Visible;
+		nomFonction = "AJOUTER";
 
 		NomPersonnel->Text = "";
 		PrenomPersonnel->Text = "";
@@ -371,7 +347,7 @@ namespace InterfaceProjetBDD {
 
 		}
 	
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void buttonSupprimerPersonnel_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	int indexActuel = dataGridView1->CurrentCell->RowIndex;
 	PersonnelModif = GestionP->getPersonnels()[indexActuel];
@@ -381,13 +357,35 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		GestionP->del(PersonnelModif);
 
 		majDataViewPersonnel(GestionP->getPersonnels());
-		majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+		majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 		
 	}
 }
+	   private: System::Void majPersonnel_Click(System::Object^ sender, System::EventArgs^ e) {
+		   this->buttonAjouterPersonnel->Visible = !this->buttonAjouterPersonnel->Visible;
+		   NomPersonnel->Visible = !NomPersonnel->Visible;
+		   PrenomPersonnel->Visible = !PrenomPersonnel->Visible;
+		   DateEmbauchePersonnel->Visible = !DateEmbauchePersonnel->Visible;
+		   Superieur->Visible = !Superieur->Visible;
+		   validationButton->Visible = !validationButton->Visible;
+		   nomFonction = "MODIFIER";
 
+		   int indexActuel = dataGridView1->CurrentCell->RowIndex;
+		   //ATTRIBUTION DES DONNEES PAR RAPPORT A CELUI SELECTIONNE
+		   PersonnelModif = GestionP->getPersonnels()[indexActuel];
+		   AdresseModif = GestionA->getAdresse(PersonnelModif->getID(), "Personnel", "")[0];
+
+
+		   this->NomPersonnel->Text = PersonnelModif->getNom();
+		   this->PrenomPersonnel->Text = PersonnelModif->getPrenom();
+		   this->DateEmbauchePersonnel->Text = PersonnelModif->getDateEmbauche();
+		   this->Superieur->Text = Convert::ToString(PersonnelModif->getID_Superieur());
+
+
+
+	   }
 	private: System::Void validationButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (MessageBox::Show("Voulez-vous vraiment ajouter ce personnel ? ", "Ajouter un personnel", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		if (MessageBox::Show("Voulez-vous vraiment "+nomFonction+" ce personnel ? ", nomFonction+" un personnel", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 
 
 			PersonnelModif->setNom(this->NomPersonnel->Text);
@@ -397,8 +395,9 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 			AdresseModif->setLigneAdresse(dataGridView2->Rows[0]->Cells[0]->Value->ToString());
 			AdresseModif->setPays(dataGridView2->Rows[0]->Cells[1]->Value->ToString());
-			AdresseModif->setCP(dataGridView2->Rows[0]->Cells[2]->Value->ToString());
+			
 			AdresseModif->setVille(dataGridView2->Rows[0]->Cells[3]->Value->ToString());
+			AdresseModif->setCP(Ville->Verif(AdresseModif->getVille()));
 
 			this->NomPersonnel->Text = "";
 			this->PrenomPersonnel->Text = "";
@@ -411,12 +410,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			DateEmbauchePersonnel->Visible = false;
 			Superieur->Visible = false;
 			validationButton->Visible = false;
-			this->button2->Visible = true;
+			this->buttonAjouterPersonnel->Visible = true;
 
 
 			GestionP->persist(PersonnelModif, AdresseModif);
 			majDataViewPersonnel(GestionP->getPersonnels());
-			majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[0]->getID()));
+			majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[0]->getID(), "Personnel", ""));
 
 		}
 
@@ -424,28 +423,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		
 
 	}
-private: System::Void majPersonnel_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->button2->Visible = !this->button2->Visible;
-	NomPersonnel->Visible = !NomPersonnel->Visible;
-	PrenomPersonnel->Visible = !PrenomPersonnel->Visible;
-	DateEmbauchePersonnel->Visible = !DateEmbauchePersonnel->Visible;
-	Superieur->Visible = !Superieur->Visible;
-	validationButton->Visible = !validationButton->Visible;
 
-	int indexActuel = dataGridView1->CurrentCell->RowIndex;
-	//ATTRIBUTION DES DONNEES PAR RAPPORT A CELUI SELECTIONNE
-	PersonnelModif = GestionP->getPersonnels()[indexActuel];
-	AdresseModif = GestionA->getAdressePersonnel(PersonnelModif->getID())[0];
-	
-
-	this->NomPersonnel->Text = PersonnelModif->getNom();
-	this->PrenomPersonnel->Text = PersonnelModif->getPrenom();
-	this->DateEmbauchePersonnel->Text = PersonnelModif->getDateEmbauche();
-	this->Superieur->Text = Convert::ToString(PersonnelModif->getID_Superieur());
-	
-	
-
-}
 
 	private: void majDataViewPersonnel(array<Personnel^>^ TableauPersonnel) {
 
@@ -497,7 +475,7 @@ private: System::Void majPersonnel_Click(System::Object^ sender, System::EventAr
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 	int IndexActu = dataGridView1->CurrentCell->RowIndex;
-	majDataViewAdressePersonnel(GestionA->getAdressePersonnel(GestionP->getPersonnels()[IndexActu]->getID()));
+	majDataViewAdressePersonnel(GestionA->getAdresse(GestionP->getPersonnels()[IndexActu]->getID(), "Personnel", ""));
 	
 
 }

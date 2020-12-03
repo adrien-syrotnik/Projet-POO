@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forms">
+      <UniqueIdentifier>{f65e4f7f-45b8-400e-aebf-58925067267f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\ServicesEntite">
+      <UniqueIdentifier>{1de1db7a-feef-4270-aa71-ba9061b280a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\ComposantEntite">
+      <UniqueIdentifier>{4cf33b7a-bc56-40bc-8ddb-4d59ab57880a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ComposantEntite">
+      <UniqueIdentifier>{01f95752-5596-4efc-adba-3a0e3e1c0348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ServicesEntite">
+      <UniqueIdentifier>{26b688ee-3996-4c6a-81cb-c245bde549b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -20,12 +35,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MyForm.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -44,23 +53,56 @@
     <ClInclude Include="MyFormStatistiques.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="CL_CAD.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Adresse.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
-    <ClInclude Include="Personnel.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="GestionPersonnel.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Article.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
     <ClInclude Include="Client.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
-    <ClInclude Include="Adresse.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Commande.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="Personnel.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="PrixArticle.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="CL_CAD.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
     <ClInclude Include="GestionAdresse.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="GestionClient.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="GestionCommande.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="GestionPersonnel.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
+    </ClInclude>
+    <ClInclude Include="Paiement.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="GestionArticle.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="VerifVille.h">
+      <Filter>Fichiers d%27en-tête\ServicesEntite</Filter>
+    </ClInclude>
+    <ClInclude Include="NombreArticle.h">
+      <Filter>Fichiers d%27en-tête\ComposantEntite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,40 +116,67 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="MyForm.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyFormPersonnel.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyFormCommandes.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClCompile>
     <ClCompile Include="MyFormClient.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClCompile>
-    <ClCompile Include="MyFormStock.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClCompile Include="MyFormCommandes.cpp">
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
+    </ClCompile>
+    <ClCompile Include="MyFormPersonnel.cpp">
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClCompile>
     <ClCompile Include="MyFormStatistiques.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClCompile>
-    <ClCompile Include="CL_CAD.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Personnel.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="GestionPersonnel.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="MyFormStock.cpp">
+      <Filter>Fichiers d%27en-tête\Forms</Filter>
     </ClCompile>
     <ClCompile Include="Adresse.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Article.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="CL_CAD.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Commande.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Personnel.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="PrixArticle.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
     </ClCompile>
     <ClCompile Include="GestionAdresse.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="GestionClient.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="GestionCommande.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="GestionPersonnel.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="Paiement.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="GestionArticle.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="VerifVille.cpp">
+      <Filter>Fichiers sources\ServicesEntite</Filter>
+    </ClCompile>
+    <ClCompile Include="NombreArticle.cpp">
+      <Filter>Fichiers sources\ComposantEntite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

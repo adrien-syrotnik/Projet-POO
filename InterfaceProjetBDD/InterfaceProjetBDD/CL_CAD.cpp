@@ -23,9 +23,6 @@ CL_CAD::CL_CAD()
     this->CMD = gcnew SqlCommand(this->rq_sql, cnx);
     this->CMD->CommandType = CommandType::Text;
 
-
-
-
 }
 
 void CL_CAD::setSQL(String^ rq_sql)

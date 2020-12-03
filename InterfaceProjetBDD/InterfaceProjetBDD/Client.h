@@ -20,11 +20,13 @@ public:
     int getID();
     void setNom(String^);
     String^ getNom();
-    static array<Client^>^ getClients();
-    void persist();
-    static String^ getTableName();
     String^ getPrenom();
     void setPrenom(String^ prenom);
-    void del();
+    String^ getDateAnniversaire();
+    void setDateAnniversaire(String^ prenom);
+    String^ getDatePremierAchat();
+    void setDatePremierAchat(String^ prenom);
+
+    
 };
 
