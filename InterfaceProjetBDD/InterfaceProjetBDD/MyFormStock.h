@@ -80,6 +80,7 @@ namespace InterfaceProjetBDD {
 		System::ComponentModel::Container ^components;
 		GestionArticle^ GestionArt = gcnew GestionArticle;
 		Article^ ArticleModif = gcnew Article;
+		
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -436,6 +437,30 @@ private: System::Void buttonValidation_Click(System::Object^ sender, System::Eve
 
 }
 private: System::Void validationButtonPrixArticle_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int IndexActuel = dataGridView1->CurrentCell->RowIndex;
+	ArticleModif = GestionArt->getArticles()[IndexActuel];
+
+	array<prixArticle^>^ TabPrixArticle2;
+
+	TabPrixArticle2 = gcnew array<prixArticle^>(dataGridView3->RowCount - 1);
+
+	
+	for (int i = 0; i < TabPrixArticle2->Length; i++) {
+		TabPrixArticle2[i] = gcnew prixArticle;
+		TabPrixArticle2[i]->setPrixArticleUnitaire(Convert::ToDouble(dataGridView3->Rows[i]->Cells[1]->Value));
+		TabPrixArticle2[i]->setSeuilQuantité(Convert::ToDouble(dataGridView3->Rows[i]->Cells[0]->Value));
+		TabPrixArticle2[i]->setID_Article(ArticleModif->getID());
+
+	}
+
+	GestionArt->persist(TabPrixArticle2);
+
+	ArticleModif = GestionArt->getArticles()[0];
+	majDataViewArticle(GestionArt->getArticles());
+	majDataViewPrixArticle(GestionArt->getprixArticle(ArticleModif->getID()));
+
+
 }
 
 

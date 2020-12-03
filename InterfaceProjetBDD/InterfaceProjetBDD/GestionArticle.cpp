@@ -22,6 +22,24 @@ array<Article^>^ GestionArticle::getArticles()
     return Articles;
 }
 
+
+
+Article^ GestionArticle::getArticleParLeNom(String^ Name)
+{
+    String^ tableName = GestionArticle::getTableName();
+    //Requête pour récupérer à partir de Sql Server 
+    //le DataSet contenant les Clients
+    CL_CAD^ connexion = gcnew CL_CAD();
+    DataSet^ ds = connexion->getRows("SELECT * FROM Article WHERE Supprimer='False' AND Nom = '"+Name+"';", tableName);
+    int size = ds->Tables[tableName]->Rows->Count;
+    Article^ Articles = gcnew Article;
+
+    //remplir le tableau Clients à partir des Clients récupérée dans DS.
+    
+        Articles = gcnew Article(ds->Tables[tableName]->Rows[0]);
+    return Articles;
+}
+
 String^ GestionArticle::getTableName()
 {
     return "Article";
@@ -85,6 +103,21 @@ void GestionArticle::persist(Article^ Art)
         //connexion->update("UPDATE Adresse SET Ligne1 = '" + A->getLigneAdresse() + "', Pays = '" + A->getPays() + "', CodePostal = '" + A->getCP() + "', Ville = '" + A->getVille() + "'  WHERE id = " + A->getID() + ";");
 
     }
+
+}
+
+
+void GestionArticle::persist(array<prixArticle^>^ Art)
+{
+    String^ tableName = "PrixArticle";
+    CL_CAD^ connexion = gcnew CL_CAD();
+
+    for(int i=0;i<Art->Length;i++)
+        //A->setID(connexion->insert("INSERT INTO Adresse (Ligne1,Pays,CodePostal,Ville) " + "VALUES('" + A->getLigneAdresse() + "','" + A->getPays() + "','" + A->getCP() + "','" + A->getVille() + "');SELECT @@IDENTITY;"));
+        (connexion->update("INSERT INTO PrixArticle (ID_Articles,SeuilQuantite,PrixUnitaireHT) VALUES ('"+ Art[i]->getID_Article() +"','" + Art[i]->getSeuilQuantité() + "',REPLACE('" + Art[i]->getPrixArticleUnitaire() + "',',','.'));"));
+
+    
+  
 
 }
 

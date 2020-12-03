@@ -39,6 +39,18 @@ Class GestionAdresse: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getAdresse(Int32, String, String): PrivateScope, Public, HideBySig
     getAdresseClient(Int32, String): PrivateScope, Public, HideBySig
     addAdress(): PrivateScope, Public, HideBySig
+Class Paiement: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.Data.DataRow): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getID(): PrivateScope, Public, HideBySig
+    setID(Int32): PrivateScope, Public, HideBySig
+    getDate(): PrivateScope, Public, HideBySig
+    setDate(String): PrivateScope, Public, HideBySig
+    getMoyen(): PrivateScope, Public, HideBySig
+    setMoyen(String): PrivateScope, Public, HideBySig
+    getMontant(): PrivateScope, Public, HideBySig
+    setMontant(Double): PrivateScope, Public, HideBySig
 Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
@@ -46,6 +58,8 @@ Class GestionCommande: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getCommandeClient(Int32): PrivateScope, Public, HideBySig
     getCommandes(): PrivateScope, Public, HideBySig
     getClientNameCommande(Int32): PrivateScope, Public, HideBySig
+    persist(Commande, NombreArticle[], Adresse, Adresse): PrivateScope, Public, HideBySig
+    del(Commande): PrivateScope, Public, HideBySig
 Class InterfaceProjetBDD.MyFormPersonnel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

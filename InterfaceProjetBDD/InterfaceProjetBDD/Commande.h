@@ -17,6 +17,7 @@ private:
     int ID_AdresseFacturation;
 
     String^ Nom;
+    String^ Prenom;
   
 public:
     Commande();
@@ -46,6 +47,8 @@ public:
 
     void setNom(String^);
     String^ getNom();
+    void setPrenom(String^);
+    String^ getPrenom();
 
 
 };

@@ -3,7 +3,7 @@ using namespace System::Data;
 using namespace System;
 
 
-ref class Paiement {
+public ref class Paiement {
 private:
 	int ID;
 	String^ Date;

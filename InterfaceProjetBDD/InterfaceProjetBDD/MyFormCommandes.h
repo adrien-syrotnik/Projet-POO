@@ -112,6 +112,16 @@ namespace InterfaceProjetBDD {
 		Commande^ CommandeModifier = gcnew Commande;
 		array<NombreArticle^>^ TabArticleModifier;
 
+		array<Adresse^>^ ListeAF;
+		array<Adresse^>^ ListeAL;
+
+		Adresse^ AdresseF;
+		Adresse^ AdresseL;
+
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+
+
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ reference;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dateLivraison;
@@ -133,6 +143,15 @@ namespace InterfaceProjetBDD {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->reference = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateLivraison = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateReglement = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateAchat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantHT = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantTVA = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->montantTTC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->nomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->prenomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->ligne1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pays1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -166,15 +185,8 @@ namespace InterfaceProjetBDD {
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->reference = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dateLivraison = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dateReglement = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dateAchat = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->montantHT = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->montantTVA = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->montantTTC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->nomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->prenomClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
@@ -198,8 +210,63 @@ namespace InterfaceProjetBDD {
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormCommandes::dataGridView1_CellClick);
 			// 
+			// reference
+			// 
+			this->reference->HeaderText = L"Référence";
+			this->reference->Name = L"reference";
+			this->reference->ReadOnly = true;
+			// 
+			// dateLivraison
+			// 
+			this->dateLivraison->HeaderText = L"Date prévue de la livraison";
+			this->dateLivraison->Name = L"dateLivraison";
+			this->dateLivraison->ReadOnly = true;
+			// 
+			// dateReglement
+			// 
+			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
+			this->dateReglement->Name = L"dateReglement";
+			this->dateReglement->ReadOnly = true;
+			// 
+			// dateAchat
+			// 
+			this->dateAchat->HeaderText = L"Date de l\'achat de la commande";
+			this->dateAchat->Name = L"dateAchat";
+			this->dateAchat->ReadOnly = true;
+			// 
+			// montantHT
+			// 
+			this->montantHT->HeaderText = L"Montant HT";
+			this->montantHT->Name = L"montantHT";
+			this->montantHT->ReadOnly = true;
+			// 
+			// montantTVA
+			// 
+			this->montantTVA->HeaderText = L"Montant TVA";
+			this->montantTVA->Name = L"montantTVA";
+			this->montantTVA->ReadOnly = true;
+			// 
+			// montantTTC
+			// 
+			this->montantTTC->HeaderText = L"Montant TTC";
+			this->montantTTC->Name = L"montantTTC";
+			this->montantTTC->ReadOnly = true;
+			// 
+			// nomClient
+			// 
+			this->nomClient->HeaderText = L"Nom du client";
+			this->nomClient->Name = L"nomClient";
+			this->nomClient->ReadOnly = true;
+			// 
+			// prenomClient
+			// 
+			this->prenomClient->HeaderText = L"ID Client";
+			this->prenomClient->Name = L"prenomClient";
+			this->prenomClient->ReadOnly = true;
+			// 
 			// dataGridView2
 			// 
+			this->dataGridView2->AllowUserToAddRows = false;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->ligne1,
@@ -238,6 +305,7 @@ namespace InterfaceProjetBDD {
 			// 
 			// dataGridView3
 			// 
+			this->dataGridView3->AllowUserToAddRows = false;
 			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->ligne2,
@@ -440,6 +508,7 @@ namespace InterfaceProjetBDD {
 			this->textBoxPrenomClient->Size = System::Drawing::Size(97, 20);
 			this->textBoxPrenomClient->TabIndex = 30;
 			this->textBoxPrenomClient->Visible = false;
+			this->textBoxPrenomClient->TextChanged += gcnew System::EventHandler(this, &MyFormCommandes::textBoxPrenomClient_TextChanged);
 			// 
 			// dataGridView5
 			// 
@@ -481,65 +550,31 @@ namespace InterfaceProjetBDD {
 			this->label5->TabIndex = 32;
 			this->label5->Text = L"Info Paiements";
 			// 
-			// reference
+			// comboBox1
 			// 
-			this->reference->HeaderText = L"Référence";
-			this->reference->Name = L"reference";
-			this->reference->ReadOnly = true;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(858, 499);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(97, 21);
+			this->comboBox1->TabIndex = 33;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyFormCommandes::comboBox1_SelectedIndexChanged);
 			// 
-			// dateLivraison
+			// comboBox2
 			// 
-			this->dateLivraison->HeaderText = L"Date prévue de la livraison";
-			this->dateLivraison->Name = L"dateLivraison";
-			this->dateLivraison->ReadOnly = true;
-			// 
-			// dateReglement
-			// 
-			this->dateReglement->HeaderText = L"Date de l\'enregistrement du règlement";
-			this->dateReglement->Name = L"dateReglement";
-			this->dateReglement->ReadOnly = true;
-			// 
-			// dateAchat
-			// 
-			this->dateAchat->HeaderText = L"Date de l\'achat de la commande";
-			this->dateAchat->Name = L"dateAchat";
-			this->dateAchat->ReadOnly = true;
-			// 
-			// montantHT
-			// 
-			this->montantHT->HeaderText = L"Montant HT";
-			this->montantHT->Name = L"montantHT";
-			this->montantHT->ReadOnly = true;
-			// 
-			// montantTVA
-			// 
-			this->montantTVA->HeaderText = L"Montant TVA";
-			this->montantTVA->Name = L"montantTVA";
-			this->montantTVA->ReadOnly = true;
-			// 
-			// montantTTC
-			// 
-			this->montantTTC->HeaderText = L"Montant TTC";
-			this->montantTTC->Name = L"montantTTC";
-			this->montantTTC->ReadOnly = true;
-			// 
-			// nomClient
-			// 
-			this->nomClient->HeaderText = L"Nom du client";
-			this->nomClient->Name = L"nomClient";
-			this->nomClient->ReadOnly = true;
-			// 
-			// prenomClient
-			// 
-			this->prenomClient->HeaderText = L"ID Client";
-			this->prenomClient->Name = L"prenomClient";
-			this->prenomClient->ReadOnly = true;
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Location = System::Drawing::Point(858, 526);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(97, 21);
+			this->comboBox2->TabIndex = 34;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &MyFormCommandes::comboBox2_SelectedIndexChanged);
 			// 
 			// MyFormCommandes
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1538, 588);
+			this->Controls->Add(this->comboBox2);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dataGridView5);
 			this->Controls->Add(this->textBoxPrenomClient);
@@ -571,10 +606,13 @@ namespace InterfaceProjetBDD {
 			this->PerformLayout();
 
 
+			CommandeModifier = GestionC->getCommandes()[0];
 			majDataViewCommande(GestionC->getCommandes());
-			majDataViewNombreArticle(GestionArt->getNombreArticleCommande(GestionC->getCommandes()[0]->getID()));
-			majDataViewAdresseCommande(GestionA->getAdresse(GestionC->getCommandes()[0]->getID(), "Commande", ""), dataGridView2);
-			majDataViewAdresseCommande(GestionA->getAdresse(GestionC->getCommandes()[0]->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
+			majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
+			majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
+			majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
+			//majDataViewPaiement(GestionC->getPaiementCommande(CommandeModifier->getID()),dataGridView5);
+
 		}
 #pragma endregion
 
@@ -602,9 +640,19 @@ namespace InterfaceProjetBDD {
 		dataGridView3->Rows->Clear();
 		dataGridView1->ClearSelection();
 		nomFonction = "AJOUTER";
+
+		CommandeModifier = gcnew Commande;
 	}
 private: System::Void buttonSupprimerCommande_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (MessageBox::Show("Voulez-vous vraiment supprimer cette commande ? ", "Supprimer une commande", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+
+		GestionC->del(CommandeModifier);
+
+		majDataViewCommande(GestionC->getCommandes());
+		majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
+		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
+		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
+
 	}
 }
 private: System::Void buttonModifierCommande_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -650,16 +698,37 @@ private: System::Void buttonValidation_Click(System::Object^ sender, System::Eve
 
 
 		
+
+
+		CommandeModifier->setReference(this->textBoxReference->Text);
+		CommandeModifier->setDatePrevueLivraison(this->textBoxDateLivraison->Text);
+		CommandeModifier->setDateReglementEnregistre(this->textBoxDateEnregistrementReglement->Text);
+		CommandeModifier->setDateAchatCommande(this->textBoxDateAchatCommande->Text);
+		CommandeModifier->setID_Client(Convert::ToInt32(this->textBoxPrenomClient->Text));
+
+		
+
+
+
 		TabArticleModifier = gcnew array<NombreArticle^>(dataGridView4->RowCount-1);
 
 
 		for (int i = 0; i < TabArticleModifier->Length; i++) {
 			TabArticleModifier[i] = gcnew NombreArticle;
-			TabArticleModifier[i]->article->setNom(dataGridView4->Rows[i]->Cells[0]->Value->ToString());
+			TabArticleModifier[i]->article = GestionArt->getArticleParLeNom(dataGridView4->Rows[i]->Cells[0]->Value->ToString());
 			TabArticleModifier[i]->Quantite = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[1]->Value));
-			TabArticleModifier[i]->Prix = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[2]->Value));
-			TabArticleModifier[i]->Remise = (Convert::ToInt32(dataGridView4->Rows[i]->Cells[3]->Value));
+			TabArticleModifier[i]->Prix = (Convert::ToDouble(dataGridView4->Rows[i]->Cells[2]->Value));
+			TabArticleModifier[i]->Remise = (Convert::ToDouble(Convert::ToString(dataGridView4->Rows[i]->Cells[3]->Value)->Replace(L".", L",")));
+			
 		}
+
+		GestionC->persist(CommandeModifier,TabArticleModifier,AdresseL,AdresseF);
+
+		majDataViewCommande(GestionC->getCommandes());
+		CommandeModifier = GestionC->getCommandes()[0];
+		majDataViewNombreArticle(GestionArt->getNombreArticleCommande(CommandeModifier->getID()));
+		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", ""), dataGridView2);
+		majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
 
 	}
 
@@ -697,7 +766,7 @@ private: void majDataViewNombreArticle(array<NombreArticle^>^ TableauArticle) {
 
 		dataGridView4->Rows[ligne]->Cells[0]->Value = TableauArticle[ligne]->article->getNom();
 		dataGridView4->Rows[ligne]->Cells[1]->Value = TableauArticle[ligne]->Quantite;
-		dataGridView4->Rows[ligne]->Cells[2]->Value = TableauArticle[ligne]->Prix + " €";
+		dataGridView4->Rows[ligne]->Cells[2]->Value = TableauArticle[ligne]->Prix;
 		dataGridView4->Rows[ligne]->Cells[3]->Value = TableauArticle[ligne]->Remise;
 
 	}
@@ -720,8 +789,21 @@ private: void majDataViewAdresseCommande(array<Adresse^>^ TableauAdresse,DataGri
 	}
 }
 
+	   /*private: void majDataViewPaiement2(array<Paiement^>^ TableauPaiement) {
 
+		   dataGridView5->Rows->Clear();
 
+		   for (int ligne = 0; ligne < TableauPaiement->Length; ligne++) {
+
+			   dataGridView5->Rows->Add();
+
+			   dataGridView5->Rows[ligne]->Cells[0]->Value = TableauPaiement[ligne]->getDate();
+			   dataGridView5->Rows[ligne]->Cells[1]->Value = TableauPaiement[ligne]->getMoyen();
+			   dataGridView5->Rows[ligne]->Cells[2]->Value = TableauPaiement[ligne]->getMontant() + " €";
+
+		   }
+	   }*/
+	   //private : void maj(array<Paiement^>^ T) {}
 
 private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
@@ -732,5 +814,38 @@ private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Wi
 	majDataViewAdresseCommande(GestionA->getAdresse(CommandeModifier->getID(), "Commande", "_Commande_AdresseFacturation"), dataGridView3);
 
 }
+private: System::Void textBoxPrenomClient_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+	if (textBoxPrenomClient->Text != L"")  {
+		ListeAF = GestionA->getAdresseClient(Convert::ToInt32(textBoxPrenomClient->Text), "Facturation");
+		ListeAL = GestionA->getAdresseClient(Convert::ToInt32(textBoxPrenomClient->Text), "Livraison");
+
+		comboBox1->Items->Clear();
+		comboBox2->Items->Clear();
+
+		for (int i = 0; i < ListeAL->Length; i++) {
+			comboBox1->Items->Add(ListeAL[i]->getLigneAdresse() + " " + ListeAL[i]->getVille() + " " + ListeAL[i]->getCP());
+		}
+		for (int i = 0; i < ListeAF->Length; i++) {
+			comboBox2->Items->Add(ListeAF[i]->getLigneAdresse() + " " + ListeAF[i]->getVille() + " " + ListeAF[i]->getCP());
+		}
+	}
+}
+
+
+
+
+	   private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		   AdresseL = GestionA->getAdresseClient(Convert::ToInt32(textBoxPrenomClient->Text), "Livraison")[comboBox1->SelectedIndex];
+
+
+	   }
+		private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+			AdresseF = GestionA->getAdresseClient(Convert::ToInt32(textBoxPrenomClient->Text), "Facturation")[comboBox2->SelectedIndex];
+
+
+		}
 };
 }

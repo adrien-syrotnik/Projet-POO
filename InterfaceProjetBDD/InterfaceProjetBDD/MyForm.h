@@ -312,5 +312,6 @@ private: System::Void comboBox1_TextUpdate(System::Object^ sender, System::Event
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	CL_CAD::motdepasse = textBox1->Text;
 }
+
 };
 }

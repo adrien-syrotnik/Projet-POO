@@ -17,9 +17,11 @@ private:
 public:
     GestionArticle();
     array<Article^>^ getArticles(); //NE PAS OUBLIER DE VERIF QUE SUPPRIMER = FALSE
+    void persist(array<prixArticle^>^ Art);
     array<prixArticle^>^ getprixArticle(int);
     String^ getTableName();
     void persist(Article^);//, array<Adresse^>^);  
     void del(Article^);
     array<NombreArticle^>^ getNombreArticleCommande(int IdCommande);
+    Article^ getArticleParLeNom(String^ Name);
 };

@@ -14,6 +14,7 @@ Commande::Commande()
     this->MontantTTC = 0;
     this->MontantTVA = 0;
     this->Nom = "";
+    this->Prenom = "";
 
 
 }
@@ -25,9 +26,9 @@ Commande::Commande(DataRow^ DR)
     this->DatePrevueLivraison = Convert::ToString(DR->ItemArray[2]);
     this->DateReglementEnregistre = Convert::ToString(DR->ItemArray[3]);
     this->DateAchatCommande = Convert::ToString(DR->ItemArray[4]);
-    this->MontantHT = Convert::ToDouble(DR->ItemArray[5]);
-    this->MontantTVA = Convert::ToDouble(DR->ItemArray[6]);
-    this->MontantTTC = Convert::ToDouble(DR->ItemArray[7]);
+    if(!DBNull::Value->Equals(DR->ItemArray[5])) this->MontantHT = Convert::ToDouble(DR->ItemArray[5]);
+    if (!DBNull::Value->Equals(DR->ItemArray[6])) this->MontantTVA = Convert::ToDouble(DR->ItemArray[6]);
+    if (!DBNull::Value->Equals(DR->ItemArray[7])) this->MontantTTC = Convert::ToDouble(DR->ItemArray[7]);
 
     this->ID_Client = Convert::ToInt32(DR->ItemArray[8]);
     this->ID_AdresseFacturation = Convert::ToInt32(DR->ItemArray[9]);
@@ -131,4 +132,11 @@ void Commande::setNom(String^ N) {
 }
 String^ Commande::getNom() {
     return this->Nom;
+}
+
+void Commande::setPrenom(String^ N) {
+    this->Prenom = N;
+}
+String^ Commande::getPrenom() {
+    return this->Prenom;
 }
